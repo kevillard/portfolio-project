@@ -88,43 +88,50 @@
         <div class="row">
             <section class="contact">
                 <div class="col-md-offset-4 col-md-4 text-center">
-                    <h2 class="contact_titre">Me contacter : </h2>
+                    <h2 class="contact_titre">Me contacter :</h2>
                 </div>
-                <form id="contactform">
+                <form id="contactform" >
                     <div class="col-md-offset-3 col-md-3">
                         <div class="form-group">
-                            <label for="first_name">Nom : </label>
-                            <input type="text" class="form-control" name="firstname" id="first_name" placeholder="Nom">
+                            <label for="first_name">Nom<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <input type="text" onkeyup="verifFirstName(this)" class="form-control" name="firstname" id="first_name" placeholder="Nom">
+                            <span id="tooltips1" class="tips">Le nom doit faire 3 lettres minimum</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="last_name">Prénom : </label>
-                            <input type="text" name="lastname" id="last_name" class="form-control" placeholder="Prénom">
+                            <label for="last_name">Prénom<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <input type="text" name="lastname" onkeyup="verifLastName(this)" id="last_name" class="form-control" placeholder="Prénom">
+                            <span id="tooltips2" class="tips">le prénom doit faire 3 lettres minimum</span>
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-3">
                         <div class="form-group">
-                            <label for="cp">Code Postal : </label>
-                            <input type="text" id="cp" name="codep" class="form-control" placeholder="Code Postal">
+                            <label for="cp">Code Postal<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <input type="text" id="cp" name="codep" onkeyup="verifCodePostal(this)" class="form-control" placeholder="Code Postal">
+                            <span id="tooltips3" class="tips">Le code postal doit être un numéro et être composé de 5 chiffres</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="ville">Ville : </label>
-                            <input type="text" id="ville" name="town" class="form-control" placeholder="Ville">
+                            <label for="ville">Ville<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <input type="text" onkeyup="verifVille(this)" id="ville" name="town" class="form-control" placeholder="Ville">
+                            <!-- span au cas où j'arrive à utiliser le GEO API -->
+                            <!-- <span id="tooltipsapi" class="tips">La ville n'existe pas</span> -->
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6">
                         <div class="form-group">
-                            <label for="mel">Email : </label>
-                            <input type="email" id="mel" name="email" class="form-control" placeholder="Email">
+                            <label for="mel">Email<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <input type="email" id="mel" name="email" onblur="verifEmail(this)" class="form-control" placeholder="Email">
+                            <span id="tooltips4" class="tips">L'email doit être valide !</span>
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6">
                         <div class="form-group">
-                            <label for="msgs">Message : </label>
-                            <textarea name="message" id="msgs" class="form-control" cols="30" rows="10" placeholder="Ton message"></textarea>
+                            <label for="msgs">Message<span class="glyphicon glyphicon-asterisk"></span> : </label>
+                            <textarea name="message" id="msgs" class="form-control" cols="30" rows="10" placeholder="Ton message" onblur="verifMsg(this)"></textarea>
+                            <span class="tips" id="tooltips5">Le message est trop court</span>
                         </div>
                     </div>
                     <div class="col-md-offset-5 col-md-2">
@@ -145,8 +152,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/additional-methods.min.js"></script>
     <script type="text/javascript">
         TweenMax.staggerFromTo($('#lightBlueNumbers path'), 3, {
             alpha: 1

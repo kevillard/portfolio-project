@@ -57,11 +57,10 @@ label {
     font-family: "Oswald";
     font-weight: 300 !important;
 }
-.error
-{
+.error {
     font-size: 12px !important;
 }
-
+}
 .form-control {
     color: white !important;
     font-family: "Oswald";

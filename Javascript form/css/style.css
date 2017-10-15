@@ -57,11 +57,20 @@ label {
     font-family: "Oswald";
     font-weight: 300;
 }
-.error
+.tips
 {
-    font-size: 12px !important;
-}
+    display: none;
+    position: absolute;
+    margin-left: 20px;
+    font-family: "Oswald";
+    font-weight: 200;
+    color: #ff9c00;
+    padding: 2px 4px;
+    border: 1px solid red;
+    background-color: transparent;
+    border-radius: 4px;
 
+}
 .form-control {
     color: white !important;
     font-family: "Oswald";
