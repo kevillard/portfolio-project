@@ -90,19 +90,36 @@ function verifMsg(champ) {
     if (champ.value.length < 15) {
         champ.style.border = "1px solid red";
         tooltips5.style.display = "inline-block";
-    } else {
+        return false;
+    } else if(champ.value.length == 0) {
         champ.style.border = "";
         tooltips5.style.display = "none";
+        return false;
+    } else {
+        champ.style.border = "1px solid green";
+        tooltips5.style.display = "none";
+        return true;
     }
 }
 
-/*function validation() {
-    if (verif == "OK") {
-        alert('Votre message a été envoyé')
+function verifForm(f) {
+    var nom0k = verifFirstName(f.firstname);
+    var prenom0k = verifLastName(f.lastname);
+    var cp0k = verifCodePostal(f.codep);
+    var ville0k = verifVille(f.town);
+    var email0k = verifEmail(f.email);
+    var msg0k = verifMsg(f.message);
+    console.log(nom0k);
+    console.log(prenom0k);
+    console.log(cp0k);
+    console.log(ville0k);
+    console.log(email0k);
+    console.log(msg0k);
+
+    if (nom0k && prenom0k && cp0k && ville0k && email0k && msg0k) {
+        return true;
     } else {
-        alert("Votre message n'a pas pu être envoyé")
+        alert('Vérifier le formulaire !')
+        return false;
     }
-}*/
-/* firstname doit avoir 3 caractères minimum
-   lastname doit avoir 3 caractères minimum
-   codep doit être composé de 5 numéros (pas de lettres)*/
+}
