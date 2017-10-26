@@ -4,12 +4,12 @@ $(document).ready(function(){
     $("#submit").click(function{
 
 
-        $.post(
+        $.ajax({
 
-            'traitement.php',
-
-            {
-
+                url: 'traitement.php',
+                type: 'POST',
+                data: ""
+                
                 firstname: $("#first_name").val(),
                 lastname: $("#last_name").val(),
                 codepostal: $("#cp").val(),
@@ -20,12 +20,21 @@ $(document).ready(function(){
             },
 
 
-            function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+            function(data){
 
+                if(data == 'msgagree'){
+
+                     $("#resultat").html("<p>Votre message a bien été envoyé !</p>");
+                }
+                else{
+
+                     $("#resultat").html("<p>Votre n'a pas pu être envoyé !</p>");
+                }
+        
             },
 
 
-            'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+            'text'
 
          );
 
