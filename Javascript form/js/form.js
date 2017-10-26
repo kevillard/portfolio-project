@@ -1,4 +1,8 @@
-var form = document.getElementById('contactform');
+var form = document.querySelector("form");
+
+form.addEventListener("reset", resetBorder);
+
+var tipsReset = document.querySelectorAll('.tips');
 
 function verifFirstName(champ) {
 
@@ -57,11 +61,11 @@ function verifCodePostal(champ) {
 }
 
 function verifVille(champ) {
-
+    var regex = /^[a-zA-Z]+$/;
     if (champ.value.length == 0) {
         champ.style.borderColor = "";
         return false;
-    } // Rajouter un else if pour le GEO API 
+    }
     else {
         champ.style.border = "1px solid green";
         return true;
@@ -109,17 +113,17 @@ function verifForm(f) {
     var ville0k = verifVille(f.town);
     var email0k = verifEmail(f.email);
     var msg0k = verifMsg(f.message);
-    console.log(nom0k);
-    console.log(prenom0k);
-    console.log(cp0k);
-    console.log(ville0k);
-    console.log(email0k);
-    console.log(msg0k);
 
     if (nom0k && prenom0k && cp0k && ville0k && email0k && msg0k) {
         return true;
     } else {
         alert('Vérifier le formulaire !')
         return false;
+    }
+}
+function resetBorder() {
+    for (i = 0; i < 6; i++) {
+        form[i].style.border = "";
+        tipsReset[i].style.display = "";
     }
 }
