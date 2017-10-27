@@ -1,15 +1,11 @@
 $(document).ready(function(){
 
 
-    $("#submit").click(function{
-
-
-        $.ajax({
-
-                url: 'traitement.php',
-                type: 'POST',
-                data: ""
-                
+    $("#submit").click(function(){
+            e.preventDefault();
+    
+        var formulaire = {
+                       
                 firstname: $("#first_name").val(),
                 lastname: $("#last_name").val(),
                 codepostal: $("#cp").val(),
@@ -17,22 +13,16 @@ $(document).ready(function(){
                 email: $("#mel").val(),
                 message: $("#msgs").val()
 
+}
+
+        $.ajax({
+
+                url: '../traitement.php',
+                type: 'POST',
+                data: formulaire,
+                
+
             },
-
-
-            function(data){
-
-                if(data == 'msgagree'){
-
-                     $("#resultat").html("<p>Votre message a bien été envoyé !</p>");
-                }
-                else{
-
-                     $("#resultat").html("<p>Votre n'a pas pu être envoyé !</p>");
-                }
-        
-            },
-
 
             'text'
 
