@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'Loraregular';
+    src: url("../fonts/Lora-Regular.ttf");
+}
+@font-face {
+    font-family: 'LoraBold';
+    src: url("../fonts/Lora-Bold.ttf");
+}
+@font-face {
+    font-family: 'Opensansregular';
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+    font-family: 'Opensansitalic';
+    src: url("../fonts/OpenSans-Italic.ttf");
+}
+header {
+    background-image: url(../images/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.regular {
+    font-family: 'Loraregular';
+}
+.bold {
+    font-family: 'LoraBold';
+}
+.open-sansr {
+    font-family: 'Opensansregular';
+}
+.green {
+    color: #28a84a;
+}
+.white {
+    color: white;
+}
+.title {
+    font-size: 125px;
+    text-shadow: 1px 1px black;
+}
+.sous-title {
+    font-size: 50px;
+    text-shadow: 1px 1px black;
+}
+header ul {
+    list-style: none;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 45px;
+}
+header ul li {
+    font-size: 28px;
+    display: inline;
+    padding: 50px;
+}
+.icon {
+    background-color: #969bac;
+    font-size: 22px;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 5px;
+}
+.curriculum-vitae {
+    background-color: #ffffff;
+    padding-bottom: 80px;
+}
+.titre-categorie {
+    letter-spacing: 3px;
+    font-size: 22px;
+    padding: 4px;
+    margin-bottom: 20px;
+    color: #434f64;
+    width: 100%;
+    background-color: #e9e9eb;
+}
+.paragraphe-categorie {
+    color: #434f64;
+    line-height: 27px;
+    font-size: 16px;
+}
+.social {
+    margin-left: -30px;
+    background-color: #969bac;
+    border-radius: 50%;
+    color: white;
+    padding: 4px;
+    margin-top: 8px;
+}
+.curriculum-vitae ul li {
+    list-style: none;
+    padding: 10px;
+}
