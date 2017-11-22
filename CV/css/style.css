@@ -121,3 +121,11 @@ header ul li {
 .js {
     margin-left: 70px;
 }
+.lang {
+    margin-bottom: 40px;
+}
+.t-lang {
+    clear: right;
+    font-size: 30px;
+    margin-left: 30px;
+}
