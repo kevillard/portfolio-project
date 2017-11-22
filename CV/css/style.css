@@ -15,10 +15,14 @@
     src: url("../fonts/OpenSans-Italic.ttf");
 }
 header {
-    background-image: url(../images/header.jpg);
+    background-image: url(../images/header/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+svg {
+    width: 50px;
+    height: 50px;
 }
 .regular {
     font-family: 'Loraregular';
@@ -28,6 +32,9 @@ header {
 }
 .open-sansr {
     font-family: 'Opensansregular';
+}
+.open-sansita {
+    font-family: 'Opensansitalic';
 }
 .green {
     color: #28a84a;
@@ -90,4 +97,27 @@ header ul li {
 .curriculum-vitae ul li {
     list-style: none;
     padding: 10px;
+}
+.exp_liste {
+    color: #434f64;
+    padding: 0;
+    margin: 0;
+}
+.exp_liste h3 {
+    margin: 0;
+    padding: 0;
+}
+.competences figure {
+    margin-bottom: 35px;
+}
+.comp {
+    margin-bottom: 40px;
+    color: #434f64;
+}
+.comp_legend {
+    margin-left: 60px;
+    font-size: 27px;
+}
+.js {
+    margin-left: 70px;
 }
