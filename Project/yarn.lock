@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@symfony/webpack-encore@^0.17.0":
+"@symfony/webpack-encore@^0.17.1":
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-0.17.1.tgz#4889d92bd241eff48ff4b72e76fa367b4c085c9e"
   dependencies:
