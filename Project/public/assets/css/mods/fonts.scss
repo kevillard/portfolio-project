@@ -1,0 +1,16 @@
+@font-face
+{
+  font-family: 'HelveticaBold';
+  src: url("../fonts/HelveticaBold.ttf");
+}
+@font-face
+{
+  font-family: 'LobsterRegular';
+  src: url("../fonts/Lobster-Regular.ttf");
+}
+@mixin fonts($font, $weight, $size) {
+  font-family: $font;
+  font-weight: $weight;
+  font-size: $size;
+  font-size: calculateRem($size);
+}

@@ -13,6 +13,6 @@ class DefaultController extends Controller
      */
     public function default()
     {
-        return $this->render('base.html.twig');
+        return $this->render('home.html.twig');
     }
 }
