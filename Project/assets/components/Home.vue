@@ -1,0 +1,54 @@
+<template>
+    <header>
+        <div class="container contenu">
+            <nav class="navbar">
+                <a class="navbar-brand" href=""><img src="assets/img/logo_kalivins.svg" alt="Logo de Kalivins"></a>
+                <div class="nav">
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Projets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="nav-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="col-lg-9 text-center">
+                <span class="title">Kevin Villard, Développeur Web</span><br />
+                <span class="sous_title">Les pieds sur terre, la tête dans les étoiles</span>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#" class="btn btn-lg">Mes Projets</a>
+        </div>
+        <div class="video_background">
+            <video playsinline autoplay muted loop poster="assets/img/poster_video.jpg" id="bgvid">
+                <source src="assets/video/header.mp4" type="video/mp4">
+            </video>
+            <div class="grain"></div>
+        </div>
+    </header>
+</template>
+
+<script>
+    export default {
+        name: "home",
+        data(){
+            return {
+
+            }
+        }
+    }
+</script>

@@ -15,23 +15,16 @@ class ProjectController extends Controller
 {
 
     /**
-     * @Route("/project/{id}", name="project_show")
+     * @Route("/api/project/{id}", name="project_show")
+     * @Method({"POST"})
      */
-    public function showProject(Request $request, $id, Project $project)
+    public function showProject(Request $request, Project $project)
     {
-
-        $apiKey = $request->headers->get('Authorization');
-
-        $responseError = new Response();
-        $responseError->setStatusCode(500);
-
-        if($apiKey != "" && $apiKey != null && $apiKey != "toto") {
-
-          $em = $this->getDoctrine()->getManager();
-
-          $userKey = $em->getRepository('App\Entity\User')->findOneBy(['apikey' => $apiKey]);
-
-            if(($userKey != "" && $userKey != null) && ($userKey->getApiKey() != "" && $userKey->getApiKey() != null && $userKey->getApiKey() == $apiKey)) {
+            $authAPI = $this->authAPI($request);
+            $responseError = new Response();
+            $responseError->setStatusCode(500);
+            
+            if($authAPI){
 
               $data = $this->get('jms_serializer')->serialize($project, 'json');
 
@@ -40,61 +33,82 @@ class ProjectController extends Controller
               $response->headers->set('Content-Type', 'application/json');
 
               return $response;
-
+            } else {
+              return $responseError;
             }
-            return $responseError;
-          }
-          elseif($apiKey == "toto")
-          {
-            $data = $this->get('jms_serializer')->serialize($project, 'json');
+      }
+
+    /**
+     * @Route("/api/projects", name="projects_list")
+     * @Method({"POST"})
+     */
+    public function showProjects(Request $request)
+    {
+
+        $authAPI = $this->authAPI($request);
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        if($authAPI) {
+            $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
+
+            $data = $this->get('jms_serializer')->serialize($projects, 'json');
+
 
             $response = new Response($data);
 
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;
-          }
-          return $responseError;
-      }
-
-    /**
-     * @Route("/projects", name="projects_list")
-     * @Method({"GET"})
-     */
-    public function showProjects()
-    {
-        $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
-
-        $data = $this->get('jms_serializer')->serialize($projects, 'json');
-
-
-        $response = new Response($data);
-
-        $response->headers->set('Content-Type', 'application/json');
-
-
-        return $response;
+        } else {
+            return $responseError;
+        }
     }
-
+// Methode a deplacer au AdminController
     /**
-     * @Route("/addproject", name="project_create")
+     * @Route("/admin/addproject", name="project_create")
      * @Method({"POST"})
      */
     public function createProject(Request $request)
     {
+        $authAPI = $this->authAPI($request);
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
 
-        $data = $request->getContent();
+        if($authAPI) {
+            $data = $request->getContent();
 
-        $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Project', 'json');
-
-
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($project);
-
-        $em->flush();
+            $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Project', 'json');
 
 
-        return new Response('', Response::HTTP_CREATED);
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($project);
+
+            $em->flush();
+
+
+            return new Response('', Response::HTTP_CREATED);
+        } else {
+            return $responseError;
+        }
+    }
+    public function authAPI($request){
+
+      $apiKey = $request->headers->get('Authorization');
+
+      if($apiKey != "" && $apiKey != null && $apiKey != "publickey") {
+          $em = $this->getDoctrine()->getManager();
+        $userKey = $em->getRepository('App\Entity\User')->findOneBy(['apikey' => $apiKey]);
+        if(($userKey != "" && $userKey != null) && ($userKey->getApiKey() != "" && $userKey->getApiKey() != null && $userKey->getApiKey() == $apiKey)) {
+          return true;
+        }
+          return false;
+        }
+        elseif($apiKey == "publickey")
+        {
+          return true;
+        }
+        return false;
     }
 }

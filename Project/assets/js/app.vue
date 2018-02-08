@@ -1,20 +1,19 @@
 <template>
     <div id="app">
-        <hello></hello>
+        <home></home>
+        <projects></projects>
     </div>
 </template>
 
 <script>
-    import Hello from '../components/Hello'
-
-    class TestClassSyntax {
-
-    }
+    import Projects from '../components/Projects'
+    import Home from '../components/Home'
 
     export default {
         name: 'app',
         components: {
-            Hello
+            Home,
+            Projects
         }
     }
 </script>

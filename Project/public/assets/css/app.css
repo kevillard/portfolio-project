@@ -38,7 +38,7 @@
 
 header nav {
   z-index: 100;
-  margin-bottom: 20%; }
+  margin-bottom: 16%; }
   header nav .nav-item {
     font-family: HelveticaBold;
     font-weight: normal;
@@ -172,6 +172,11 @@ header .text-center {
     transition: background-color 1s; }
   header .text-center a:hover {
     background-color: #2c3e50; }
+
+@media only screen and (min-width: 1200px) {
+  header .video_background video {
+    min-width: 120%;
+    min-height: 120%; } }
 
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
   header .video_background {
