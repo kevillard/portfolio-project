@@ -1,30 +1,47 @@
 .all_projects {
-  background-color: black;
+    padding-top: 160px;
+    padding-bottom: 2px;
+    width: 100%;
+    height: 100%;
+  background-image: url(../img/mountain_stars.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   .large-project {
-    border: 2px solid white;
+    padding-top: 50px;
+    border: 3px solid white;
     border-radius: 10px 10px;
-    height: 215px;
+    height: 250px;
+    cursor: pointer;
     .title {
+      pointer-events: none;
       @include fonts(Montserrat, normal, 36px);
       color: white;
       text-shadow: 1px 1px 1px white;
+      margin-bottom: 66px;
     }
     .categories {
-      @include fonts(Montserrat, normal, 26px);
+      pointer-events: none;
+      @include fonts(Montserrat, normal, 22px);
       color: white;
       text-shadow: 1px 1px 1px white;
     }
   }
   .small-project {
+    padding-top: 50px;
     border: 2px solid white;
     border-radius: 10px 10px;
+    cursor:pointer;
     .title {
-      @include fonts(Montserrat, normal, 32px);
+      pointer-events: none;
+      @include fonts(Montserrat, normal, 30px);
       color: white;
       text-shadow: 1px 1px 1px white;
+      margin-bottom: 40px;
     }
     .categories {
-      @include fonts(Montserrat, normal, 20px);
+      pointer-events: none;
+      @include fonts(Montserrat, normal, 18px);
       color: white;
       text-shadow: 1px 1px 1px white;
     }
