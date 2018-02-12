@@ -1,7 +1,10 @@
 <template>
       <div id="app">
-          <router-view v-transition="false">
-          </router-view>
+          <Loader></Loader>
+          <fade-transition>
+              <router-view>
+              </router-view>
+          </fade-transition>
       </div>
 </template>
 

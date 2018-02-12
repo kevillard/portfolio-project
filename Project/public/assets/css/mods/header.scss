@@ -2,7 +2,7 @@ header {
   .title
   {
     position: relative;
-    z-index: 999;
+    z-index: 98;
     color: white;
     @include fonts(MontserratBold, normal, 50px);
     text-shadow: 1px 1px 1px white;
@@ -10,7 +10,7 @@ header {
   .sous_title
   {
     position: relative;
-    z-index: 999;
+    z-index: 98;
     color: white;
     @include fonts(MontserratBold, normal, 30px);
     text-shadow: 1px 1px 1px white;
@@ -19,7 +19,7 @@ header {
     margin-top: 7%;
     a {
       position: relative;
-      z-index: 999;
+      z-index: 98;
       @include fonts(Montserrat, normal, 25px);
       color: white;
       padding-left: 30px;

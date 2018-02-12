@@ -9,7 +9,7 @@
         </div>
     </nav>
         <div class="nav container-fluid">
-            <ul>
+            <ul class="navlist">
                 <li class="nav-item">
                     <router-link class="nav-link" :to="{ name: 'home' }">Accueil</router-link>
                 </li>

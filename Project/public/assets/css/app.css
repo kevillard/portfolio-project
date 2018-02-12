@@ -37,18 +37,15 @@
     transform: translate(-3%, -3%); } }
 
 nav {
-  z-index: 100;
   margin-bottom: 12%; }
-
-.nav-item {
-  font-family: HelveticaBold;
-  font-weight: normal;
-  font-size: 17px;
-  font-size: 1.0625rem;
-  color: black; }
+  nav .navbar-brand {
+    z-index: 98; }
 
 .nav {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
   opacity: 0;
   transition: opacity 800ms;
   z-index: 99;
@@ -56,6 +53,16 @@ nav {
   bottom: 0;
   width: 100%;
   height: 100%; }
+  .nav .navlist {
+    list-style: none; }
+  .nav .nav-link {
+    font-family: HelveticaBold;
+    font-weight: normal;
+    font-size: 1.875rem;
+    font-size: 30px;
+    color: white; }
+  .nav .nav-link.open {
+    pointer-events: all; }
 
 .nav.open {
   background-color: rgba(10, 10, 10, 0.8);
@@ -64,6 +71,7 @@ nav {
   overflow: hidden; }
 
 #nav-icon {
+  z-index: 100;
   width: 60px;
   height: 45px;
   position: relative;
@@ -120,33 +128,33 @@ nav {
 
 header .title {
   position: relative;
-  z-index: 999;
+  z-index: 98;
   color: white;
   font-family: MontserratBold;
   font-weight: normal;
-  font-size: 50px;
   font-size: 3.125rem;
+  font-size: 50px;
   text-shadow: 1px 1px 1px white; }
 
 header .sous_title {
   position: relative;
-  z-index: 999;
+  z-index: 98;
   color: white;
   font-family: MontserratBold;
   font-weight: normal;
-  font-size: 30px;
   font-size: 1.875rem;
+  font-size: 30px;
   text-shadow: 1px 1px 1px white; }
 
 header .text-center {
   margin-top: 7%; }
   header .text-center a {
     position: relative;
-    z-index: 999;
+    z-index: 98;
     font-family: Montserrat;
     font-weight: normal;
-    font-size: 25px;
     font-size: 1.5625rem;
+    font-size: 25px;
     color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -203,8 +211,7 @@ header .text-center {
     display: none; } }
 
 .all_projects {
-  padding-top: 160px;
-  padding-bottom: 2px;
+  padding-bottom: 58px;
   width: 100%;
   height: 100%;
   background-image: url(../img/mountain_stars.jpg);
@@ -221,8 +228,8 @@ header .text-center {
       pointer-events: none;
       font-family: Montserrat;
       font-weight: normal;
-      font-size: 36px;
       font-size: 2.25rem;
+      font-size: 36px;
       color: white;
       text-shadow: 1px 1px 1px white;
       margin-bottom: 66px; }
@@ -230,8 +237,8 @@ header .text-center {
       pointer-events: none;
       font-family: Montserrat;
       font-weight: normal;
-      font-size: 22px;
       font-size: 1.375rem;
+      font-size: 22px;
       color: white;
       text-shadow: 1px 1px 1px white; }
   .all_projects .small-project {
@@ -243,8 +250,8 @@ header .text-center {
       pointer-events: none;
       font-family: Montserrat;
       font-weight: normal;
-      font-size: 30px;
       font-size: 1.875rem;
+      font-size: 30px;
       color: white;
       text-shadow: 1px 1px 1px white;
       margin-bottom: 40px; }
@@ -252,7 +259,7 @@ header .text-center {
       pointer-events: none;
       font-family: Montserrat;
       font-weight: normal;
-      font-size: 18px;
       font-size: 1.125rem;
+      font-size: 18px;
       color: white;
       text-shadow: 1px 1px 1px white; }

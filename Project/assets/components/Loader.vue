@@ -1,5 +1,7 @@
 <template>
+    <div style="position: absolute; left: 50%; top: 50%;" v-if="$loadingRouteData">
     <div class="spinner"></div>
+    </div>
 </template>
 
 <script>
@@ -11,9 +13,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .spinner {
+    position: relative;
+    left: -50%;
+    top: -50%;
     width: 40px;
     height: 40px;
-    background-color: #333;
+    background-color: black;
 
     margin: 100px auto;
     -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;

@@ -14,9 +14,9 @@
         <meta name="msapplication-TileImage" content="assets/img/favicon/mstile-144x144.png">
         <meta name="msapplication-config" content="assets/img/favicon/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/app.css">
-        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
@@ -31,6 +31,7 @@
                 $('#nav-icon').click(function(){
                     $(this).toggleClass('open');
                     $('.nav').toggleClass('open');
+                    $('.nav-link').toggleClass('open');
                 });
             });
         </script>
