@@ -1,23 +1,23 @@
 <template>
 <div class="projects">
-    <h1>{{ allProjects }}</h1>
+    <h1>{{ Aboutme }}</h1>
 </div>
 </template>
 
 <script>
-    import store from '../store/ProjectsStore'
+    import store from '../store/AboutMeStore'
     export default {
-        name: 'projects',
+        name: 'About',
         data(){
             return {
                 state: store.state
             }
         },
         computed: {
-            allProjects: function() { return this.state.projectsjson}
+            Aboutme: function() { return this.state.me}
         },
         created() {
-          store.fetchAllProjects()
+          store.fetchMe()
         }
       }
 </script>

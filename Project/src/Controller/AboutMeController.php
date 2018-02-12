@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Project;
+use App\Entity\Me;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,47 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class ProjectController extends Controller
+class AboutMeController extends Controller
 {
-
     /**
-     * @Route("/api/project/{id}", name="project_show")
+     * @Route("/api/aboutme", name="about_me")
      * @Method({"POST"})
      */
-    public function showProject(Request $request, Project $project)
-    {
-            $authAPI = $this->authAPI($request);
-            $responseError = new Response();
-            $responseError->setStatusCode(500);
-
-            if($authAPI){
-
-              $data = $this->get('jms_serializer')->serialize($project, 'json');
-
-              $response = new Response($data);
-
-              $response->headers->set('Content-Type', 'application/json');
-
-              return $response;
-            } elseif($authAPI == "public") {
-
-              $data = $this->get('jms_serializer')->serialize($project, 'json');
-
-              $response = new Response($data);
-
-              $response->headers->set('Content-Type', 'application/json');
-
-              return $response;
-            } else {
-              return $responseError;
-            }
-      }
-
-    /**
-     * @Route("/api/projects", name="projects_list")
-     * @Method({"POST"})
-     */
-    public function showProjects(Request $request)
+    public function showMe(Request $request)
     {
 
         $authAPI = $this->authAPI($request);
@@ -59,10 +25,10 @@ class ProjectController extends Controller
         $responseError->setStatusCode(500);
 
         if($authAPI) {
-          
-            $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
 
-            $data = $this->get('jms_serializer')->serialize($projects, 'json');
+            $about = $this->getDoctrine()->getRepository('App:Me')->findAll();
+
+            $data = $this->get('jms_serializer')->serialize($about, 'json');
 
 
             $response = new Response($data);
@@ -72,9 +38,9 @@ class ProjectController extends Controller
             return $response;
         } elseif($authAPI == "public") {
 
-          $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
+          $about = $this->getDoctrine()->getRepository('App:Me')->findAll();
 
-          $data = $this->get('jms_serializer')->serialize($projects, 'json');
+          $data = $this->get('jms_serializer')->serialize($about, 'json');
 
 
           $response = new Response($data);
@@ -86,12 +52,11 @@ class ProjectController extends Controller
             return $responseError;
         }
     }
-// Methode a deplacer au AdminController
     /**
-     * @Route("/admin/addproject", name="project_create")
+     * @Route("/admin/addabout", name="about_create")
      * @Method({"POST"})
      */
-    public function createProject(Request $request)
+    public function createMe(Request $request)
     {
         $authAPI = $this->authAPI($request);
         $responseError = new Response();
@@ -100,7 +65,7 @@ class ProjectController extends Controller
         if($authAPI) {
             $data = $request->getContent();
 
-            $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Project', 'json');
+            $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Me', 'json');
 
 
             $em = $this->getDoctrine()->getManager();
@@ -120,8 +85,8 @@ class ProjectController extends Controller
       $apiKey = $request->headers->get('Authorization');
 
       if($apiKey != "" && $apiKey != null && $apiKey != "publickey") {
-          $em = $this->getDoctrine()->getManager();
         $userKey = $em->getRepository('App\Entity\User')->findOneBy(['apikey' => $apiKey]);
+          $em = $this->getDoctrine()->getManager();
         if(($userKey != "" && $userKey != null) && ($userKey->getApiKey() != "" && $userKey->getApiKey() != null && $userKey->getApiKey() == $apiKey)) {
           return true;
         }

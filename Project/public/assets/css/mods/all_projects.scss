@@ -1,0 +1,32 @@
+.all_projects {
+  background-color: black;
+  .large-project {
+    border: 2px solid white;
+    border-radius: 10px 10px;
+    height: 215px;
+    .title {
+      @include fonts(Montserrat, normal, 36px);
+      color: white;
+      text-shadow: 1px 1px 1px white;
+    }
+    .categories {
+      @include fonts(Montserrat, normal, 26px);
+      color: white;
+      text-shadow: 1px 1px 1px white;
+    }
+  }
+  .small-project {
+    border: 2px solid white;
+    border-radius: 10px 10px;
+    .title {
+      @include fonts(Montserrat, normal, 32px);
+      color: white;
+      text-shadow: 1px 1px 1px white;
+    }
+    .categories {
+      @include fonts(Montserrat, normal, 20px);
+      color: white;
+      text-shadow: 1px 1px 1px white;
+    }
+  }
+}

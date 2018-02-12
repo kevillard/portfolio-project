@@ -1,17 +1,16 @@
 import axios from 'axios'
 
-class ProjectsStore {
+class AboutMeStore {
     constructor() {
         this.state = {
-            projectsjson: '',
-            errors: []
+            me: ''
         }
     }
 
-    fetchAllProjects() {
+    fetchMe() {
         var self = this
         var init = { method: 'POST',
-                     url: "/api/projects",
+                     url: "/api/aboutme",
                      headers: {
                          "Authorization": "publickey"
                      },
@@ -19,12 +18,9 @@ class ProjectsStore {
                      cache: 'default' }
 
         axios(init).then(response => {
-                    self.state.projectsjson = response.data
-            })
-            .catch(e => {
-              self.state.errors.push(e)
+                    self.state.me = response.data
             })
     }
 }
 
-export default new ProjectsStore()
+export default new AboutMeStore()
