@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="assets/css/vue-animate.min.css">
         <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
@@ -26,15 +27,6 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="{{ asset('build/app.js') }}"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#nav-icon').click(function(){
-                    $(this).toggleClass('open');
-                    $('.nav').toggleClass('open');
-                    $('.nav-link').toggleClass('open');
-                });
-            });
-        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

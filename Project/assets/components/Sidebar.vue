@@ -1,7 +1,9 @@
 <template>
     <div id="sidebar">
     <nav class="navbar container">
-        <a class="navbar-brand" href=""><img src="assets/img/logo_kalivins.svg" alt="Logo de Kalivins"><h1 class="title_page">{{ title }}</h1></a>
+        <span class="navbar-brand">
+          <img src="assets/img/logo_kalivins.svg" alt="Logo de Kalivins"><h1 transition="fadeLeft" class="title_page">{{ title }}</h1>
+        </span>
         <div id="nav-icon">
             <span></span>
             <span></span>
@@ -34,10 +36,5 @@
     export default {
         name: "sidebar",
         props: ['title'],
-        data(){
-            return {
-                title: ""
-            }
-        }
     }
 </script>

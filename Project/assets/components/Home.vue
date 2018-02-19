@@ -1,9 +1,6 @@
 <template>
-    <div class="home">
+    <div v-cloak class="home">
         <header>
-            <keep-alive>
-                <sidebar v-bind:title="Test"></sidebar>
-            </keep-alive>
             <div class="container contenu">
                 <div class="col-lg-9 text-center">
                     <span class="title">Kevin Villard, Développeur Web</span><br />
@@ -30,3 +27,9 @@ import videobackground from '../components/VideoBackground'
         }
     }
 </script>
+
+<style scoped>
+[v-cloak] {
+  display:none;
+}
+</style>

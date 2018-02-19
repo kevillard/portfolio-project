@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Loader from '../components/Loader.vue'
 import router from '../router/'
 import App from './app'
 import vueg from 'vueg'
 import VueHotkey from 'v-hotkey'
 import Transitions from 'vue2-transitions'
+import 'vue-animate/dist/vue-animate.min.css'
 import 'vueg/css/transition-min.css'
-import 'particles.js'
 
-Vue.component('Loader', Loader)
+
 Vue.use(VueRouter)
 Vue.use(vueg, router)
 Vue.use(VueHotkey)
@@ -20,4 +19,10 @@ let vm = new Vue({
     router,
     template: '<App/>',
     components: { App },
+})
+
+$('#nav-icon').click(function(){
+    $(this).toggleClass('open')
+    $('.nav').toggleClass('open')
+    $('.nav-link').toggleClass('open')
 })

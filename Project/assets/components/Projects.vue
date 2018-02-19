@@ -1,9 +1,5 @@
 <template>
     <section class="all_projects">
-        <keep-alive>
-            <sidebar></sidebar>
-        </keep-alive>
-        <div class="hidden-sm hidden-xs" id="particles-js"></div>
         <div class="container">
             <div class="row">
 

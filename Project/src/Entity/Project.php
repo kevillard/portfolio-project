@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use JMS\Serializer\Annotation as Serializer;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -108,28 +109,33 @@ class Project
     private $imageTablet;
 
     /**
-     * @var string
      * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", cascade={"persist"})
+     * @ORM\JoinTable(name="category_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")}
+     *      )
      * @Serializer\Expose
      */
     private $categories;
 
     /**
-     * @var string
      * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @ORM\ManyToMany(targetEntity="App\Entity\Technology", cascade={"persist"})
+     * @ORM\JoinTable(name="technology_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="technology_id", referencedColumnName="id")}
+     *      )
      * @Serializer\Expose
      */
     private $technologies;
 
     /**
-     * @var string
      * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @ORM\ManyToMany(targetEntity="App\Entity\Creator", cascade={"persist"})
+     * @ORM\JoinTable(name="creator_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="creator_id", referencedColumnName="id")})
      * @Serializer\Expose
      */
     private $creators;
@@ -141,6 +147,13 @@ class Project
      * @Serializer\Expose
      */
     private $imageSmartphone;
+
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+        $this->categories = new ArrayCollection();
+        $this->technologies = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -331,14 +344,6 @@ class Project
     public function setImageSmartphone(string $imageSmartphone): void
     {
         $this->imageSmartphone = $imageSmartphone;
-    }
-
-
-    public function __construct()
-    {
-        $this->date = new \Datetime();
-        $this->categories = new ArrayCollection();
-        $this->technologies = new ArrayCollection();
     }
 
     public function addCategory(Category $category)

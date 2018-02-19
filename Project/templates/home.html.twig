@@ -4,6 +4,9 @@
 {% endblock %}
 {% block body %}
 <div id="app">
+  <div v-if="!$data">
+    <div class="spinner"></div>
+  </div>
 </div>
 {% endblock %}
 {% block javascripts %}
