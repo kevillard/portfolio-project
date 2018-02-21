@@ -15,41 +15,43 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login")
      */
-    public function login(Request $request, UserPasswordEncoderInterface $encoder)
+    public function login(Request $request, UserPasswordEncoderInterface $encoder, AuthenticationUtils $authUtils)
     {
-        $data = $request->getContent();
 
-        $user_info = $this->get('jms_serializer')->deserialize($data, 'App\Entity\User', 'json');
+      $error = $authUtils->getLastAuthenticationError();
+      $lastUsername = $authUtils->getLastUsername();
 
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('App\Entity\User')->findOneBy(['username' => $user_info->getUsername()]);
-
-        $match = $encoder->isPasswordValid($user, $user_info->getPassword());
-        if($match)
-        {
-          dump($user->getApiKey());
-          die();
-        }
+      return $this->render('security/login.html.twig', array(
+        'last_username' => $lastUsername,
+        'error' => $error,
+      ));
     }
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/logout", name="logout")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function logout()
     {
-        $user = new User();
-        $apikey_utils = new GeneratorApikey();
 
-            $password = $passwordEncoder->encodePassword($user,"");
-            $user->setPassword($password);
-            $user->setEmail("");
-            $user->setApikey($apikey_utils->generate());
-            $user->setUsername("");
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-
-            dump($user);
-            die();
     }
+    // /**
+    //  * @Route("/register", name="user_registration")
+    //  */
+    // public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    // {
+    //     $user = new User();
+    //     $apikey_utils = new GeneratorApikey();
+    //
+    //         $password = $passwordEncoder->encodePassword($user,"");
+    //         $user->setPassword($password);
+    //         $user->setEmail("");
+    //         $user->setApikey($apikey_utils->generate());
+    //         $user->setUsername("");
+    //         $em = $this->getDoctrine()->getManager();
+    //         $em->persist($user);
+    //         $em->flush();
+    //
+    //
+    //         dump($user);
+    //         die();
+    // }
 }

@@ -59,7 +59,7 @@ class ProjectController extends Controller
         $responseError->setStatusCode(500);
 
         if($authAPI) {
-          
+
             $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
 
             $data = $this->get('jms_serializer')->serialize($projects, 'json');
@@ -98,6 +98,7 @@ class ProjectController extends Controller
         $responseError->setStatusCode(500);
 
         if($authAPI) {
+
             $data = $request->getContent();
 
             $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Project', 'json');
