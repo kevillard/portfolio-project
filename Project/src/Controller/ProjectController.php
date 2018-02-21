@@ -3,7 +3,13 @@
 namespace App\Controller;
 
 
+use App\Entity\Creator;
 use App\Entity\Project;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,7 +92,6 @@ class ProjectController extends Controller
             return $responseError;
         }
     }
-// Methode a deplacer au AdminController
     /**
      * @Route("/admin/addproject", name="project_create")
      * @Method({"POST"})
@@ -101,8 +106,23 @@ class ProjectController extends Controller
 
             $data = $request->getContent();
 
-            $project = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Project', 'json');
+            $project = new Project();
+            $creator = new Creator();
 
+
+            $formProject = $this->createFormBuilder($project)
+                ->add('title', TextType::class, array('label' => 'Titre'))
+                ->add('sous_title', TextType::class, array('label' => 'Sous titre'))
+                ->add('content', TextareaType::class, array('label' => 'Petit résumé'))
+                ->add('link', TextType::class, array('label' => 'Lien vers le projet'))
+                ->add('logo', FileType::class, array('label' => 'Logo du projet', 'required' => 'false'))
+                ->add('fullpagepsd1', FileType::class, array('label' => 'Le premier PSD (en .jpeg)', 'required' => 'false'))
+                ->add('fullpagepsd2', FileType::class, array('label' => 'Le second PSD (en .jpeg)', 'required' => 'false'))
+                ->add('save', SubmitType::class, array('label' => 'Créer le projet'))
+                ->getForm();
+
+            $formCreator = $this->createFormBuilder($creator)
+                ->add('name', TextType::class, array('label' => 'Créateurs'));
 
             $em = $this->getDoctrine()->getManager();
 

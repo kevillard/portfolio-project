@@ -2,14 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Services\GeneratorApikey;
+use App\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DashboardController extends Controller
 {
@@ -21,6 +18,8 @@ class DashboardController extends Controller
     if(false === $authChecker->isGranted('ROLE_ADMIN')){
       return $this->redirectToRoute('/');
     }
-    return $this->render('security/dashboard.html.twig');
+      return $this->render('security/dashboard.html.twig');
+
+
   }
 }
