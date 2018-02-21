@@ -109,9 +109,7 @@ class Project
     private $imageTablet;
 
     /**
-     * @JMS\Serializer\Annotation\Type("string")
-     * @ORM\Column(type="string", length=100)
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="projects", cascade={"persist"})
      * @ORM\JoinTable(name="category_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")}
      *      )
@@ -120,9 +118,7 @@ class Project
     private $categories;
 
     /**
-     * @JMS\Serializer\Annotation\Type("string")
-     * @ORM\Column(type="string", length=100)
-     * @ORM\ManyToMany(targetEntity="App\Entity\Technology", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Technology", inversedBy="projects", cascade={"persist"})
      * @ORM\JoinTable(name="technology_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="technology_id", referencedColumnName="id")}
      *      )
@@ -131,9 +127,7 @@ class Project
     private $technologies;
 
     /**
-     * @JMS\Serializer\Annotation\Type("string")
-     * @ORM\Column(type="string", length=100)
-     * @ORM\ManyToMany(targetEntity="App\Entity\Creator", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Creator", inversedBy="projects", cascade={"persist"})
      * @ORM\JoinTable(name="creator_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="creator_id", referencedColumnName="id")})
      * @Serializer\Expose
