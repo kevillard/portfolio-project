@@ -90,14 +90,6 @@ class Project
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
      */
-    private $createurs;
-
-    /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
-     * @ORM\Column(type="string", length=100)
-     * @Serializer\Expose
-     */
     private $imageDesktop;
 
     /**

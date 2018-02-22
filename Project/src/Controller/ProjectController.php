@@ -4,11 +4,13 @@ namespace App\Controller;
 
 
 use App\Entity\Creator;
+use App\Entity\Category;
+use App\Entity\Technology;
 use App\Entity\Project;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -107,6 +109,8 @@ class ProjectController extends Controller
             $data = $request->getContent();
 
             $project = new Project();
+            $category = new Category();
+            $technology = new Technology();
             $creator = new Creator();
 
 
@@ -118,11 +122,30 @@ class ProjectController extends Controller
                 ->add('logo', FileType::class, array('label' => 'Logo du projet', 'required' => 'false'))
                 ->add('fullpagepsd1', FileType::class, array('label' => 'Le premier PSD (en .jpeg)', 'required' => 'false'))
                 ->add('fullpagepsd2', FileType::class, array('label' => 'Le second PSD (en .jpeg)', 'required' => 'false'))
+                ->add('imageDesktop', FileType::class, array('label' => 'Screenshot du site en version desktop'))
+                ->add('imageTablet', FileType::class, array('label' => 'Screenshot du site en version tablette'))
+                ->add('imageSmartphone', FileType::class, array('label' => 'Screenshot du site en version mobile'))
                 ->add('save', SubmitType::class, array('label' => 'Créer le projet'))
                 ->getForm();
 
             $formCreator = $this->createFormBuilder($creator)
-                ->add('name', TextType::class, array('label' => 'Créateurs'));
+                ->add('creator', EntityType::class, array(
+                  'class' => 'App\Entity\Creator',
+                  'choice_label' => 'name',
+                  'expanded' => false,
+                  'multiple' => true));
+            $formCategory = $this->createFormBuilder($category)
+                ->add('category', EntityType::class, array(
+                  'class' => 'App\Entity\Category',
+                  'choice_label' => 'name',
+                  'expanded' => false,
+                  'multiple' => true));
+            $formTechnology = $this->createFormBuilder($technology)
+                ->add('technology', EntityType::class, array(
+                  'class' => 'App\Entity\Technology',
+                  'choice_label' => 'name',
+                  'expanded' => false,
+                  'multiple' => true));
 
             $em = $this->getDoctrine()->getManager();
 
