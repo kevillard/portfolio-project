@@ -1,10 +1,11 @@
 {% extends 'basedash.html.twig' %}
 
 {% block title %}
-Welcome to Dashboard
+    Admin | Rajouter un projet
 {% endblock %}
+
 {% block body %}
-<div class="page-wrapper">
+    <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
             <i class="fa fa-bars"></i>
@@ -147,67 +148,13 @@ Welcome to Dashboard
             </nav>
         </div>
 
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-md-3">
-                        <div class="card bg-primary p-4">
-                            <div class="card-body d-flex justify-content-around flex-wrap align-items-center">
-                                <div>
-                                    <span class="h1 d-block font-weight-normal mb-2">0</span>
-                                    <span class="h2 font-weight-light">Projets</span>
-                                </div>
-
-                                <div class="h1">
-                                    <i class="icon icon-folder-alt"></i>
-                                </div>
-                                <div>
-                                    <a href="admin/projets" class="btn btn-lg btn-success">Ajouter un projet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card bg-info p-4">
-                            <div class="card-body d-flex justify-content-around flex-wrap align-items-center">
-                                <div>
-                                    <span class="h1 d-block font-weight-normal mb-2">0</span>
-                                    <span class="h2 font-weight-light">Compétences</span>
-                                </div>
-
-                                <div class="h1">
-                                    <i class="icon icon-graduation"></i>
-                                </div>
-                                <div>
-                                    <a href="admin/competences" class="btn btn-lg btn-success">Ajouter une compétence</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card bg-danger p-4">
-                            <div class="card-body d-flex justify-content-around flex-wrap align-items-center">
-                                <div>
-                                    <span class="h1 d-block font-weight-normal mb-2">0</span>
-                                    <span class="h2 font-weight-light">Liens Utiles</span>
-                                </div>
-
-                                <div class="h1">
-                                    <i class="icon icon-cloud-download"></i>
-                                </div>
-                                <div>
-                                    <a href="admin/liens" class="btn btn-lg btn-success">Ajouter un lien</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-                {{ form_start(form, {attr: {class: 'form-group'} }) }}
-                    {{ form_widget(form) }}
-                {{ form_end(form) }}
+    <div class="content">
+        <div class="container-fluid">
+            {{ form_start(form, {attr: {class: 'form-group'} }) }}
+                {{ form_widget(form) }}
+            {{ form_end(form) }}
         </div>
     </div>
-</div>
+    </div>
+
 {% endblock %}

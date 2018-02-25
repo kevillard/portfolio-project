@@ -101,7 +101,7 @@ class Project
     private $imageTablet;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="projects", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", cascade={"persist"})
      * @ORM\JoinTable(name="category_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")}
      *      )
@@ -110,7 +110,7 @@ class Project
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Technology", inversedBy="projects", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Technology", cascade={"persist"})
      * @ORM\JoinTable(name="technology_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="technology_id", referencedColumnName="id")}
      *      )
@@ -119,7 +119,7 @@ class Project
     private $technologies;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Creator", inversedBy="projects", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Creator", cascade={"persist"})
      * @ORM\JoinTable(name="creator_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="creator_id", referencedColumnName="id")})
      * @Serializer\Expose
@@ -139,12 +139,10 @@ class Project
         $this->date = new \Datetime();
         $this->categories = new ArrayCollection();
         $this->technologies = new ArrayCollection();
+        $this->creators = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function getSousTitle(): string
+    public function getSousTitle()
     {
         return $this->sous_title;
     }
@@ -157,10 +155,7 @@ class Project
         $this->sous_title = $sous_title;
     }
 
-    /**
-     * @return string
-     */
-    public function getLink(): string
+    public function getLink()
     {
         return $this->link;
     }
@@ -173,9 +168,6 @@ class Project
         $this->link = $link;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
@@ -189,10 +181,7 @@ class Project
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -205,9 +194,6 @@ class Project
         $this->title = $title;
     }
 
-    /**
-     * @return string
-     */
     public function getContent(): string
     {
         return $this->content;
@@ -220,9 +206,7 @@ class Project
     {
         $this->content = $content;
     }
-    /**
-     * @return string
-     */
+
     public function getLogo(): string
     {
         return $this->logo;
@@ -236,9 +220,6 @@ class Project
         $this->logo = $logo;
     }
 
-    /**
-     * @return string
-     */
     public function getFullpagepsd1(): string
     {
         return $this->fullpagepsd1;
@@ -252,9 +233,6 @@ class Project
         $this->fullpagepsd1 = $fullpagepsd1;
     }
 
-    /**
-     * @return string
-     */
     public function getFullpagepsd2(): string
     {
         return $this->fullpagepsd2;
@@ -268,25 +246,6 @@ class Project
         $this->fullpagepsd2 = $fullpagepsd2;
     }
 
-    /**
-     * @return string
-     */
-    public function getCreateurs(): string
-    {
-        return $this->createurs;
-    }
-
-    /**
-     * @param string $createurs
-     */
-    public function setCreateurs(string $createurs): void
-    {
-        $this->createurs = $createurs;
-    }
-
-    /**
-     * @return string
-     */
     public function getImageDesktop(): string
     {
         return $this->imageDesktop;
@@ -300,9 +259,6 @@ class Project
         $this->imageDesktop = $imageDesktop;
     }
 
-    /**
-     * @return string
-     */
     public function getImageTablet(): string
     {
         return $this->imageTablet;
@@ -316,9 +272,6 @@ class Project
         $this->imageTablet = $imageTablet;
     }
 
-    /**
-     * @return string
-     */
     public function getImageSmartphone(): string
     {
         return $this->imageSmartphone;
@@ -374,7 +327,6 @@ class Project
     {
         $this->creators->removeElement($creator);
     }
-
     public function getCreators()
     {
         return $this->creators;
