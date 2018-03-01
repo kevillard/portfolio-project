@@ -37,15 +37,15 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header">{{ app.user.username }}</div>
 
-                    <a href="admin/profil" class="dropdown-item">
+                    <a href="/admin/profil" class="dropdown-item">
                         <i class="fa fa-user"></i> Profil
                     </a>
 
-                    <a href="admin/messages" class="dropdown-item">
+                    <a href="/admin/messages" class="dropdown-item">
                         <i class="fa fa-envelope"></i> Messages
                     </a>
 
-                    <a href="logout" class="dropdown-item">
+                    <a href="/logout" class="dropdown-item">
                         <i class="fa fa-lock"></i> Logout
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                     <li class="nav-title">Navigation</li>
 
                     <li class="nav-item">
-                        <a href="admin" class="nav-link active">
+                        <a href="/admin" class="nav-link active">
                             <i class="icon icon-speedometer"></i> Accueil
                         </a>
                     </li>
@@ -72,13 +72,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="admin/competences" class="nav-link">
+                                <a href="/admin/competences" class="nav-link">
                                     <i class="icon icon-graduation"></i> Mes compétences
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="admin/addcompetence" class="nav-link">
+                                <a href="/admin/addcompetence" class="nav-link">
                                     <i class="icon icon-note"></i> Ajouter une compétence
                                 </a>
                             </li>
@@ -92,15 +92,33 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="admin/projets" class="nav-link">
+                                <a href="/admin/projets" class="nav-link">
                                     <i class="icon icon-eye"></i> Mes projets
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="admin/addproject" class="nav-link">
+                                <a href="/admin/addproject" class="nav-link">
                                     <i class="icon icon-note"></i> Ajouter un projet
                                 </a>
+                            </li>
+
+                            <li>
+                              <a href="/admin/addtech" class="nav-link">
+                                <i class="icon icon-cloud-download"></i> Ajouter une technologie
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="/admin/addcat" class="nav-link">
+                                <i class="icon icon-event"></i> Ajouter une catégorie
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="/admin/addcreator" class="nav-link">
+                                <i class="icon icon-user"></i> Ajouter un contributeur
+                              </a>
                             </li>
                         </ul>
                     </li>
@@ -112,13 +130,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="admin/liens" class="nav-link">
+                                <a href="/admin/liens" class="nav-link">
                                     <i class="icon icon-link"></i> Mes liens
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="admin/addlien" class="nav-link">
+                                <a href="/admin/addlien" class="nav-link">
                                     <i class="icon icon-note"></i> Ajouter un lien
                                 </a>
                             </li>
@@ -132,7 +150,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="admin/resume" class="nav-link">
+                                <a href="/admin/resume" class="nav-link">
                                     <i class="icon icon-user"></i> Mon résumé
                                 </a>
                             </li>
