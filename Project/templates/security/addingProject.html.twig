@@ -12,7 +12,7 @@
         </a>
 
         <a class="navbar-brand" href="#">
-            <img src="assets/img/logo_kalivins.png" width="50" height="50" alt="logo">
+            <img src="{{ asset('/assets/img/logo_kalivins.png') }}" width="50" height="50" alt="logo">
         </a>
 
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -30,7 +30,7 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/img/planet_shaper.jpg" class="avatar avatar-sm" alt="logo">
+                    <img src="{{asset ('/assets/img/planet_shaper.jpg') }}" class="avatar avatar-sm" alt="logo">
                     <span class="small ml-1 d-md-down-none">{{ app.user.username }}</span>
                 </a>
 

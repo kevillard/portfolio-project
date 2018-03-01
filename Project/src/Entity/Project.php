@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -61,42 +62,37 @@ class Project
     private $link;
 
     /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
+     * @Assert\File(mimeTypes={ "image/png" })
      */
     private $logo;
 
     /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $fullpagepsd1;
 
     /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $fullpagepsd2;
 
     /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $imageDesktop;
 
     /**
-     * @var string
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      * @Serializer\Expose
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $imageTablet;
 
@@ -168,7 +164,7 @@ class Project
         $this->link = $link;
     }
 
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -194,7 +190,7 @@ class Project
         $this->title = $title;
     }
 
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -207,82 +203,78 @@ class Project
         $this->content = $content;
     }
 
-    public function getLogo(): string
+    public function getLogo()
     {
         return $this->logo;
     }
 
-    /**
-     * @param string $logo
-     */
-    public function setLogo(string $logo): void
+
+    public function setLogo($logo)
     {
         $this->logo = $logo;
+
+        return $this;
     }
 
-    public function getFullpagepsd1(): string
+    public function getFullpagepsd1()
     {
         return $this->fullpagepsd1;
     }
 
-    /**
-     * @param string $fullpagepsd1
-     */
-    public function setFullpagepsd1(string $fullpagepsd1): void
+    public function setFullpagepsd1($fullpagepsd1)
     {
         $this->fullpagepsd1 = $fullpagepsd1;
+
+        return $this;
     }
 
-    public function getFullpagepsd2(): string
+    public function getFullpagepsd2()
     {
         return $this->fullpagepsd2;
     }
 
-    /**
-     * @param string $fullpagepsd2
-     */
-    public function setFullpagepsd2(string $fullpagepsd2): void
+
+    public function setFullpagepsd2($fullpagepsd2)
     {
         $this->fullpagepsd2 = $fullpagepsd2;
+
+        return $this;
     }
 
-    public function getImageDesktop(): string
+    public function getImageDesktop()
     {
         return $this->imageDesktop;
     }
 
-    /**
-     * @param string $imageDesktop
-     */
-    public function setImageDesktop(string $imageDesktop): void
+    public function setImageDesktop($imageDesktop)
     {
         $this->imageDesktop = $imageDesktop;
+
+        return $this;
     }
 
-    public function getImageTablet(): string
+    public function getImageTablet()
     {
         return $this->imageTablet;
     }
 
-    /**
-     * @param string $imageTablet
-     */
-    public function setImageTablet(string $imageTablet): void
+    public function setImageTablet($imageTablet)
     {
         $this->imageTablet = $imageTablet;
+
+        return $this;
     }
 
-    public function getImageSmartphone(): string
+    public function getImageSmartphone()
     {
         return $this->imageSmartphone;
     }
 
-    /**
-     * @param string $imageSmartphone
-     */
-    public function setImageSmartphone(string $imageSmartphone): void
+    public function setImageSmartphone($imageSmartphone)
     {
         $this->imageSmartphone = $imageSmartphone;
+
+        return $this;
     }
 
     public function addCategory(Category $category)

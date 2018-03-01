@@ -16,17 +16,17 @@ class ProjectForm extends AbstractType
     {
         $builder->add('title', TextType::class, array('label' => 'Titre'))
             ->add('sous_title', TextType::class, array('label' => 'Sous titre'))
-            ->add('creator', EntityType::class, array(
+            ->add('creators', EntityType::class, array(
                 'class' => 'App\Entity\Creator',
                 'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => true))
-            ->add('category', EntityType::class, array(
+            ->add('categories', EntityType::class, array(
                 'class' => 'App\Entity\Category',
                 'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => true))
-            ->add('technology', EntityType::class, array(
+            ->add('technologies', EntityType::class, array(
                 'class' => 'App\Entity\Technology',
                 'choice_label' => 'name',
                 'expanded' => false,

@@ -56,7 +56,7 @@ class ProjectController extends Controller
     public function showProjects(Request $request)
     {
 
-        $authAPI = $this->authAPI($request);
+        $authAPI = $this->authAPI($session->get('apikey'));
         $responseError = new Response();
         $responseError->setStatusCode(500);
 
@@ -106,11 +106,33 @@ class ProjectController extends Controller
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($project);
-                $em->flush();
 
-                return $this->redirectToRoute('api/project/{id}', array(
+               $logo = $project->getLogo();
+               $psd1 = $project->getFullpagepsd1();
+               $psd2 = $project->getFullpagepsd2();
+               $desktopImg = $project->getImageDesktop();
+               $tabletImg = $project->getImageTablet();
+               $smartImg = $project->getImageSmartphone();
+
+               $logoName = $this->uploadFile($logo);
+               $psd1Name = $this->uploadFile($psd1);
+               $psd2Name = $this->uploadFile($psd2);
+               $desktopName = $this->uploadFile($desktopImg);
+               $tabletName = $this->uploadFile($tabletImg);
+               $smartName = $this->uploadFile($smartImg);
+
+               $project->setLogo($logoName);
+               $project->setFullpagepsd1($psd1Name);
+               $project->setFullpagepsd2($psd2Name);
+               $project->setImageDesktop($desktopName);
+               $project->setImageTablet($tabletName);
+               $project->setImageSmartphone($smartName);
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($project);
+               $em->flush();
+
+                return $this->redirectToRoute('/api/projects', array(
                     'id' => $project->getId()
                 ));
             }
@@ -121,10 +143,24 @@ class ProjectController extends Controller
             'form' => $form->createView()
         ));
     }
+    public function uploadFile($file)
+    {
+      $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+      $file->move(
+          $this->getParameter('images_directory'),
+          $fileName
+      );
+
+      return $fileName;
+    }
     public function authAPI($request){
 
       $apiKey = $request;
 
+      if($apiKey == "" || $apiKey == null){
+          $apiKey = $request->headers->get('Authorization');
+      }
       if($apiKey != "" && $apiKey != null && $apiKey != "publickey") {
           $em = $this->getDoctrine()->getManager();
         $userKey = $em->getRepository('App\Entity\User')->findOneBy(['apikey' => $apiKey]);
@@ -139,4 +175,11 @@ class ProjectController extends Controller
         }
         return false;
     }
+    /**
+   * @return string
+   */
+  private function generateUniqueFileName()
+  {
+      return md5(uniqid());
+  }
 }
