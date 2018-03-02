@@ -24,8 +24,172 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body class="sidebar-fixed header-fixed">
+      <div class="page-wrapper">
+          <nav class="navbar page-header">
+              <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+                  <i class="fa fa-bars"></i>
+              </a>
+
+              <a class="navbar-brand" href="#">
+                  <img src="{{ asset('assets/img/logo_kalivins.png')}}" width="50" height="50" alt="logo">
+              </a>
+
+              <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+                  <i class="fa fa-bars"></i>
+              </a>
+
+              <ul class="navbar-nav ml-auto">
+
+                  <li class="nav-item d-md-down-none">
+                      <a href="#">
+                          <i class="fa fa-envelope-open"></i>
+                          <span class="badge badge-pill badge-danger">5</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img src="{{ asset('assets/img/planet_shaper.jpg') }}" class="avatar avatar-sm" alt="logo">
+                          <span class="small ml-1 d-md-down-none">{{ app.user.username }}</span>
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-right">
+                          <div class="dropdown-header">{{ app.user.username }}</div>
+
+                          <a href="admin/profil" class="dropdown-item">
+                              <i class="fa fa-user"></i> Profil
+                          </a>
+
+                          <a href="admin/messages" class="dropdown-item">
+                              <i class="fa fa-envelope"></i> Messages
+                          </a>
+
+                          <a href="logout" class="dropdown-item">
+                              <i class="fa fa-lock"></i> Logout
+                          </a>
+                      </div>
+                  </li>
+              </ul>
+          </nav>
+
+          <div class="main-container">
+              <div class="sidebar">
+                  <nav class="sidebar-nav">
+                      <ul class="nav">
+                          <li class="nav-title">Navigation</li>
+
+                          <li class="nav-item">
+                              <a href="/admin" class="nav-link active">
+                                  <i class="icon icon-speedometer"></i> Accueil
+                              </a>
+                          </li>
+
+                          <li class="nav-item nav-dropdown">
+                              <a href="#" class="nav-link nav-dropdown-toggle">
+                                  <i class="icon icon-graduation"></i> Compétences <i class="fa fa-caret-left"></i>
+                              </a>
+
+                              <ul class="nav-dropdown-items">
+                                  <li class="nav-item">
+                                      <a href="/admin/competences" class="nav-link">
+                                          <i class="icon icon-graduation"></i> Mes compétences
+                                      </a>
+                                  </li>
+
+                                  <li class="nav-item">
+                                      <a href="/admin/addcompetence" class="nav-link">
+                                          <i class="icon icon-note"></i> Ajouter une compétence
+                                      </a>
+                                  </li>
+                              </ul>
+                          </li>
+
+                          <li class="nav-item nav-dropdown">
+                              <a href="#" class="nav-link nav-dropdown-toggle">
+                                  <i class="icon icon-folder-alt"></i> Projets <i class="fa fa-caret-left"></i>
+                              </a>
+
+                              <ul class="nav-dropdown-items">
+                                  <li class="nav-item">
+                                      <a href="/admin/projets" class="nav-link">
+                                          <i class="icon icon-eye"></i> Mes projets
+                                      </a>
+                                  </li>
+
+                                  <li class="nav-item">
+                                      <a href="/admin/addproject" class="nav-link">
+                                          <i class="icon icon-note"></i> Ajouter un projet
+                                      </a>
+                                  </li>
+
+                                  <li>
+                                    <a href="/admin/addtech" class="nav-link">
+                                      <i class="icon icon-cloud-download"></i> Ajouter une technologie
+                                    </a>
+                                  </li>
+
+                                  <li>
+                                    <a href="/admin/addcat" class="nav-link">
+                                      <i class="icon icon-event"></i> Ajouter une catégorie
+                                    </a>
+                                  </li>
+
+                                  <li>
+                                    <a href="/admin/addcreator" class="nav-link">
+                                      <i class="icon icon-user"></i> Ajouter un contributeur
+                                    </a>
+                                  </li>
+                              </ul>
+                          </li>
+
+                          <li class="nav-item nav-dropdown">
+                              <a href="#" class="nav-link nav-dropdown-toggle">
+                                  <i class="icon icon-link"></i> Liens utiles <i class="fa fa-caret-left"></i>
+                              </a>
+
+                              <ul class="nav-dropdown-items">
+                                  <li class="nav-item">
+                                      <a href="/admin/liens" class="nav-link">
+                                          <i class="icon icon-link"></i> Mes liens
+                                      </a>
+                                  </li>
+
+                                  <li class="nav-item">
+                                      <a href="/admin/addlien" class="nav-link">
+                                          <i class="icon icon-note"></i> Ajouter un lien
+                                      </a>
+                                  </li>
+                              </ul>
+                          </li>
+
+                          <li class="nav-item nav-dropdown">
+                              <a href="#" class="nav-link nav-dropdown-toggle">
+                                  <i class="icon icon-user"></i> Moi <i class="fa fa-caret-left"></i>
+                              </a>
+
+                              <ul class="nav-dropdown-items">
+                                  <li class="nav-item">
+                                      <a href="/admin/resume" class="nav-link">
+                                          <i class="icon icon-user"></i> Mon résumé
+                                      </a>
+                                  </li>
+                              </ul>
+                          </li>
+
+                          <li class="nav-item">
+                              <a href="/#/blog" class="nav-link">
+                                  <i class="icon icon-event"></i> Grav Admin Panel
+                              </a>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+
+              <div class="content">
         {% block body %}
         {% endblock %}
+              </div>
+            </div>
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/js/carbon.js') }}"></script>

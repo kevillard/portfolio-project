@@ -11,7 +11,7 @@ class SimpleForm extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-    $builder->add('name', TextType::class, array('label' => 'Nom de la technologie'))
+    $builder->add('name', TextType::class)
             ->add('save', SubmitType::class, array('label' => 'Ajouter'))
             ->getForm();
   }

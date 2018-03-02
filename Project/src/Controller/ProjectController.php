@@ -4,6 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\Project;
+use App\Entity\Technology;
+use App\Entity\Creator;
+use App\Entity\Category;
 use App\Form\ProjectForm;
 use App\Form\SimpleForm;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -144,6 +147,109 @@ class ProjectController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    /**
+     * @Route("/admin/addtech", name="technologie_create")
+     */
+    public function addTechnologie(Request $request, SessionInterface $session)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        $tech = new Technology();
+
+        $form = $this->createForm(SimpleForm::class, $tech);
+
+        if($authAPI) {
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($tech);
+               $em->flush();
+
+                return $this->redirectToRoute('admin');
+            }
+        } else {
+            return $responseError;
+        }
+        return $this->render('security/addingSimple.html.twig', array(
+            'form' => $form->createView(),
+            'slug' => 'Technologie'
+        ));
+    }
+
+    /**
+     * @Route("/admin/addcreator", name="creator_create")
+     */
+    public function addCreator(Request $request, SessionInterface $session)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        $crea = new Creator();
+
+        $form = $this->createForm(SimpleForm::class, $crea);
+
+        if($authAPI) {
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($crea);
+               $em->flush();
+
+                return $this->redirectToRoute('admin');
+            }
+        } else {
+            return $responseError;
+        }
+        return $this->render('security/addingSimple.html.twig', array(
+            'form' => $form->createView(),
+            'slug' => 'Createur'
+        ));
+    }
+
+    /**
+     * @Route("/admin/addcat", name="category_create")
+     */
+    public function addCategory(Request $request, SessionInterface $session)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        $category = new Category();
+
+        $form = $this->createForm(SimpleForm::class, $category);
+
+        if($authAPI) {
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($category);
+               $em->flush();
+
+                return $this->redirectToRoute('admin');
+            }
+        } else {
+            return $responseError;
+        }
+        return $this->render('security/addingSimple.html.twig', array(
+            'form' => $form->createView(),
+            'slug' => 'Categorie'
+        ));
+    }
+
     public function uploadFile($file)
     {
       $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
