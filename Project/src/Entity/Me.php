@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Project
@@ -41,6 +44,15 @@ class Me
      */
 
     private $citation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Competence", cascade={"persist"})
+     * @ORM\JoinTable(name="competence_me", joinColumns={@JoinColumn(name="me_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="competence_id", referencedColumnName="id")}
+     *      )
+     * @Serializer\Expose
+     */
+    private $competences;
 
     /**
      * @var string
@@ -90,6 +102,12 @@ class Me
      */
     private $discord;
 
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+        $this->competences = new ArrayCollection();
+    }
+
     /**
      * @return string
      */
@@ -120,6 +138,22 @@ class Me
     public function setCitation(string $citation): void
     {
         $this->citation = $citation;
+    }
+
+    public function addCompetence(Competence $competence)
+    {
+        $this->competences[] = $competence;
+
+        return $this;
+    }
+    public function removeCompetence(Competence $competence)
+    {
+        $this->competences->removeElement($competence);
+    }
+
+    public function getCompetences()
+    {
+        return $this->competences;
     }
 
     /**

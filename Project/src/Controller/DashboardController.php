@@ -21,6 +21,17 @@ class DashboardController extends Controller
     if(false === $authChecker->isGranted('ROLE_ADMIN')){
       return $this->redirectToRoute('/');
     }
+    if($session->get('apikey') == null)
+    {
+      return $this->redirectToRoute('admin_api');
+    }
+      return $this->render('security/dashboard.html.twig');
+  }
+  /**
+   * @Route("/admin/api", name="admin_api")
+   */
+  public function ApiCheck(Request $request, SessionInterface $session)
+  {
     $form = $this->createForm(ApiKeyForm::class);
 
     $form->handleRequest($request);
@@ -36,13 +47,13 @@ class DashboardController extends Controller
           if($response)
           {
               $session->set('apikey', $apikey);
+
+              return $this->redirectToRoute('admin');
           }
 
       }
-      return $this->render('security/dashboard.html.twig', array(
+      return $this->render('security/add/apikey.html.twig', array(
           'form' => $form->createView()
       ));
-
-
   }
 }

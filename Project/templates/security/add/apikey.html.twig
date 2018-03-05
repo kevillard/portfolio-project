@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Admin | Entrer votre clé Api
+{% endblock %}
+
+{% block body %}
+{{ form_start(form, {attr: {class: 'form-group'} }) }}
+    {{ form_widget(form, {attr: {class: 'form-control-lg'}}) }}
+{{ form_end(form) }}
+{% endblock %}

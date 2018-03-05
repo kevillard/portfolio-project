@@ -19,6 +19,7 @@ class ProjectForm extends AbstractType
             ->add('creators', EntityType::class, array(
                 'class' => 'App\Entity\Creator',
                 'choice_label' => 'name',
+                'label' => 'Contributeurs',
                 'expanded' => false,
                 'multiple' => true))
             ->add('categories', EntityType::class, array(
@@ -33,7 +34,7 @@ class ProjectForm extends AbstractType
                 'multiple' => true))
             ->add('content', TextareaType::class, array('label' => 'Petit résumé'))
             ->add('link', TextType::class, array('label' => 'Lien vers le projet'))
-            ->add('logo', FileType::class, array('label' => 'Logo du projet', 'required' => 'false'))
+            ->add('logo', FileType::class, array('label' => 'Logo du projet (en .png)', 'required' => 'false'))
             ->add('fullpagepsd1', FileType::class, array('label' => 'Le premier PSD (en .jpeg)', 'required' => 'false'))
             ->add('fullpagepsd2', FileType::class, array('label' => 'Le second PSD (en .jpeg)', 'required' => 'false'))
             ->add('imageDesktop', FileType::class, array('label' => 'Screenshot du site en version desktop'))

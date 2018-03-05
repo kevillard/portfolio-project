@@ -143,7 +143,7 @@ class ProjectController extends Controller
         } else {
             return $responseError;
         }
-        return $this->render('security/addingProject.html.twig', array(
+        return $this->render('security/add/addingProject.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -176,9 +176,9 @@ class ProjectController extends Controller
         } else {
             return $responseError;
         }
-        return $this->render('security/addingSimple.html.twig', array(
+        return $this->render('security/add/addingSimple.html.twig', array(
             'form' => $form->createView(),
-            'slug' => 'Technologie'
+            'slug' => 'technologie'
         ));
     }
 
@@ -210,9 +210,9 @@ class ProjectController extends Controller
         } else {
             return $responseError;
         }
-        return $this->render('security/addingSimple.html.twig', array(
+        return $this->render('security/add/addingSimple.html.twig', array(
             'form' => $form->createView(),
-            'slug' => 'Createur'
+            'slug' => 'createur'
         ));
     }
 
@@ -244,9 +244,9 @@ class ProjectController extends Controller
         } else {
             return $responseError;
         }
-        return $this->render('security/addingSimple.html.twig', array(
+        return $this->render('security/add/addingSimple.html.twig', array(
             'form' => $form->createView(),
-            'slug' => 'Categorie'
+            'slug' => 'categorie'
         ));
     }
 

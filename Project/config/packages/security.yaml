@@ -14,7 +14,7 @@ security:
       form_login:
         always_use_default_target_path: true
         check_path: login
-        default_target_path: admin
+        default_target_path: admin_api
         login_path: login
       logout:
         path:   /logout
