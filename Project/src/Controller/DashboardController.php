@@ -21,7 +21,7 @@ class DashboardController extends Controller
     if(false === $authChecker->isGranted('ROLE_ADMIN')){
       return $this->redirectToRoute('/');
     }
-    if($session->get('apikey') == null)
+    if($session->get('apikey') == null || $session->get('apikey') == "")
     {
       return $this->redirectToRoute('admin_api');
     }

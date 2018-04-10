@@ -60,7 +60,7 @@ class ProjectController extends Controller
     public function showProjects(Request $request)
     {
 
-        $authAPI = $this->authAPI($session->get('apikey'));
+        $authAPI = $this->authAPI($request);
         $responseError = new Response();
         $responseError->setStatusCode(500);
 
@@ -69,7 +69,6 @@ class ProjectController extends Controller
             $projects = $this->getDoctrine()->getRepository('App:Project')->findAll();
 
             $data = $this->get('jms_serializer')->serialize($projects, 'json');
-
 
             $response = new Response($data);
 
@@ -90,6 +89,81 @@ class ProjectController extends Controller
           return $response;
         } else {
             return $responseError;
+        }
+    }
+    /**
+     * @Route("/admin/projets", name="projects_manage")
+     */
+    public function manageProjects(Request $request, SessionInterface $session)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        if($authAPI) {
+
+          $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
+
+          return $this->render('/security/list/projects.html.twig', array(
+            'projets' => $projects,
+          ));
+        } else {
+          return $responseError;
+        }
+    }
+    /**
+     * @Route("/admin/editproject/{id}", name="edit_project")
+     */
+    public function editProject(Request $request, SessionInterface $session, $id)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        $project = new Project();
+        
+        $form = $this->createForm(ProjectForm::class, $project);
+
+        if($authAPI) {
+        
+            $form->handleRequest($request);
+            
+                if ($form->isSubmitted() && $form->isValid()) {
+            
+                    $logo = $project->getLogo();
+                    $psd1 = $project->getFullpagepsd1();
+                    $psd2 = $project->getFullpagepsd2();
+                    $desktopImg = $project->getImageDesktop();
+                    $tabletImg = $project->getImageTablet();
+                    $smartImg = $project->getImageSmartphone();
+            
+                    $logoName = $this->uploadFile($logo);
+                    $psd1Name = $this->uploadFile($psd1);
+                    $psd2Name = $this->uploadFile($psd2);
+                    $desktopName = $this->uploadFile($desktopImg);
+                    $tabletName = $this->uploadFile($tabletImg);
+                    $smartName = $this->uploadFile($smartImg);
+            
+                    $project->setLogo($logoName);
+                    $project->setFullpagepsd1($psd1Name);
+                    $project->setFullpagepsd2($psd2Name);
+                    $project->setImageDesktop($desktopName);
+                    $project->setImageTablet($tabletName);
+                    $project->setImageSmartphone($smartName);
+            
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($project);
+                    $em->flush();
+            
+                }
+
+          $project = $this->getDoctrine()->getRepository(Project::class)->findById($id);
+
+          return $this->render('/security/edit/project.html.twig', array(
+            'projet' => $project,
+          ));
+        } else {
+          return $responseError;
         }
     }
     /**

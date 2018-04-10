@@ -1,0 +1,42 @@
+{% extends 'basedash.html.twig' %}
+
+{% block title %}
+Admin | Liste des projets
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><h2>Liste des projets</h2></div>
+      <div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Nom de projet</th>
+    <th>Sous titre de projet</th>
+    <th>Technologies</th>
+    <th>Catégories</th>
+    <th>Lien du projet</th>
+    <th>Logo</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for projet in projets %}
+  <tr>
+    <td>{{ projet.title }}</td>
+    <td>{{ projet.soustitle }}</td>
+    <td>{{ projet.getTechnologies()[0].getName() }}</td>
+    <td>{{ projet.getCategories()[0].getName() }}</td>
+    <td>{{ projet.link }}</td>
+    <td><img src="/assets/uploads/images/{{projet.logo}}" width="50" height="50"></td>
+    <td><a class="btn btn-success" href="/admin/editproject/{{ projet.id }}">Editer</a> <a class="btn btn-danger" href="/admin/deleteproject/{{ projet.id }}">Supprimer</a></td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+  </div>
+</div>
+</div>
+{% endblock %}

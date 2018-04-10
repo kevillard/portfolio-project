@@ -1,0 +1,28 @@
+{% extends 'basedash.html.twig' %}
+
+{% block title %}
+    Admin | Editer le projet
+{% endblock %}
+
+{% block body %}
+        <div class="container-fluid">
+        <h1>Editer le projet: {{ projet[0].title }}</h1>
+            {{ form_start(form, {attr: {class: 'form-group text-center'} }) }}
+                {{ form_row(form.title, {attr: {class: 'form-control form-control-lg', value: ~projet[0].title~} }) }}
+                {{ form_row(form.sous_title, {attr: {class: 'form-control form-control-lg', value: ~projet[0].sous_title~} }) }}
+                {{ form_row(form.creators, {attr: {class: 'form-control', value: ~projet[0].getCreators().getName()~ } }) }}
+                {{ form_row(form.categories, {attr: {class: 'form-control', value: ~projet[0].getCategories().getName()~ } }) }}
+                {{ form_row(form.technologies, {attr: {class: 'form-control', value: ~projet[0].getTechnologies().getName()~ } }) }}
+                {{ form_row(form.content, {attr: {class: 'form-control', rows: '40', value: ~projet[0].content~ } }) }}
+                {{ form_row(form.link, {attr: {class: 'form-control', value: ~projet[0].link~ } }) }}
+                {{ form_row(form.logo, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.fullpagepsd1, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.fullpagepsd2, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.imageDesktop, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.imageTablet, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.imageSmartphone, {attr: {class: 'form-control-file'} }) }}
+                {{ form_row(form.save, {attr: {class: 'btn btn-lg btn-success'} }) }}
+            {{ form_end(form) }}
+        </div>
+
+{% endblock %}
