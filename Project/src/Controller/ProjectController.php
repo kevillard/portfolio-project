@@ -161,6 +161,7 @@ class ProjectController extends Controller
 
           return $this->render('/security/edit/project.html.twig', array(
             'projet' => $project,
+            'form' => $form
           ));
         } else {
           return $responseError;
