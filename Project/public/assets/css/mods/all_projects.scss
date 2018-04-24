@@ -1,48 +1,175 @@
 .all_projects {
-    padding-bottom: 58px;
-    width: 100%;
-    height: 100%;
-    background-image: url(../img/mountain_stars.jpg);
+  background-color: #202225;
+  margin-top: 12%;
+  overflow-x: hidden;
+  @include fonts(Montserrat, normal, 14px);
+  line-height: 20px;
+  .title {
+    @include fonts(MontserratBold, normal, 67px);
+    color: white;
+  }
+  .excerpt {
+    color: #9b9c9e;
+  }
+  .date {
+    color: #9b9c9e;
+  }
+  .carousel-inner {
+    padding-bottom: 110px;
+  }
+  .carousel-control-prev
+  {
+    left: -100px;
+  }
+  .carousel-control-next
+  {
+    right: -100px;
+  }
+  #carouselProjects {
+    .carousel-content {
+      display: flex;
+      justify-content: space-evenly;
+      .carousel-caption {
+        text-align: left;
+        position: inherit;
+        padding-top: 90px;
+        margin-right: 20px;
+        h2 {
+          padding-top: 10px;
+          padding-bottom: 20px;
+        }
+        .date {
+          display: inline-block;
+          color: #9b9c9e;
+        }
+        hr {
+          background-color: #004DFD;
+          margin-bottom: 6px;
+          margin-left: 10px;
+          width: 80%;
+          display: inline-block;
+        }
+      }
+      img.d-block {
+        width: 40%;
+        box-shadow: .2px .3px 30px black;
+        border-radius: 6px 6px;
+      }
+    }
+  }
+  hr {
+    background-color: #004DFD;
+  }
+  .navbar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    li {
+      @include fonts(Montserrat, normal, 25px);
+      color: white;
+    }
+  }
+  .project {
+    margin-left: 100px;
+    transform-style: preserve-3d;
+    box-shadow: .2px .3px 50px black;
+    border-radius: 10px 10px;
+    margin-top: 50px;
+    transition: border 2s ease-in-out;
+    background-image: url('../img/work3.jpg');
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
-  .large-project {
-    padding-top: 50px;
-    border: 3px solid white;
-    border-radius: 10px 10px;
-    height: 250px;
+    background-size: cover;
+    .content {
+      padding-top: 40px;
+      transform: translateZ(50px);
+      width: 100%;
+      .date {
+        padding-bottom: 40px;
+        transform: translateZ(50px);
+      }
+      .title {
+        text-align: center;
+        padding-bottom: 60px;
+        transform: translateZ(50px);
+      }
+      .excerpt {
+        text-align: center;
+        transform: translateZ(50px);
+        padding-bottom: 100px;
+      }
+    }
+  }
+  .project:hover{
     cursor: pointer;
-    .title {
-      pointer-events: none;
-      @include fonts(Montserrat, normal, 36px);
-      color: white;
-      text-shadow: 1px 1px 1px white;
-      margin-bottom: 66px;
+    border: 10px solid white;
+  }
+}
+main {
+  background: #202225;
+  color: #fff;
+  overflow: auto;
+  position: relative;
+  z-index: 0;
+}
+.star {
+  fill: #4f5660;
+}
+.stars {
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  .stars_far, .stars_middle, .stars_near {
+    height: 100%;
+    position: absolute;
+    width: 200%;
+  }
+  .stars_near {
+    animation: starsField 40s linear infinite;
+    .leftConstellation, .rightConstellation {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 50%;
     }
-    .categories {
-      pointer-events: none;
-      @include fonts(Montserrat, normal, 22px);
-      color: white;
-      text-shadow: 1px 1px 1px white;
+    .leftConstellation {
+      left: 0;
     }
   }
-  .small-project {
-    padding-top: 50px;
-    border: 2px solid white;
-    border-radius: 10px 10px;
-    cursor:pointer;
-    .title {
-      pointer-events: none;
-      @include fonts(Montserrat, normal, 30px);
-      color: white;
-      text-shadow: 1px 1px 1px white;
-      margin-bottom: 40px;
+  .stars_middle {
+    animation: starsField 80s linear infinite;
+    .leftConstellation, .rightConstellation {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 50%;
     }
-    .categories {
-      pointer-events: none;
-      @include fonts(Montserrat, normal, 18px);
-      color: white;
-      text-shadow: 1px 1px 1px white;
+    .leftConstellation {
+      left: 0;
     }
   }
+  .stars_far {
+    animation: starsField 120s linear infinite;
+    .leftConstellation, .rightConstellation {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 50%;
+    }
+    .leftConstellation {
+      left: 0;
+    }
+  }
+}
+.red-overlay {
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  background: url('../img/projects.jpg');
+  background-position: center;
+  opacity: 0.3;
+  width: 100%;
+  z-index: 0;
 }

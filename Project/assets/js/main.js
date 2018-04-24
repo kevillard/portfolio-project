@@ -20,9 +20,3 @@ let vm = new Vue({
     template: '<App/>',
     components: { App },
 })
-
-$('#nav-icon').click(function(){
-    $(this).toggleClass('open')
-    $('.nav').toggleClass('open')
-    $('.nav-link').toggleClass('open')
-})

@@ -1,6 +1,7 @@
 <template>
+    <div>
     <div id="sidebar">
-    <nav class="navbar container">
+    <nav class="navbar container-fluid">
         <span class="navbar-brand">
           <img src="assets/img/logo_kalivins.svg" alt="Logo de Kalivins"><h1 transition="fadeLeft" class="title_page">{{ title }}</h1>
         </span>
@@ -10,25 +11,26 @@
             <span></span>
         </div>
     </nav>
-        <div class="nav container-fluid">
-            <ul class="navlist">
-                <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'home' }">Accueil</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'projects' }">Projets</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'about' }">A propos de moi</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'blog' }">Blog</router-link>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+    </div>
+    <div class="nav container-fluid">
+        <ul class="navlist">
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'home' }">Accueil</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'projects' }">Projets</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'about' }">A propos de moi</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'blog' }">Blog</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'contact' }">Contact</router-link>
+            </li>
+        </ul>
+    </div>
     </div>
 </template>
 

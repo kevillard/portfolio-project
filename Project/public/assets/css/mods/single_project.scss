@@ -1,0 +1,94 @@
+.single {
+  background: #332f30;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding-bottom: 230px;
+  color: white;
+  .symbols-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    list-style: none;
+    .parallax-layer {
+      position:absolute;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .near_symbols {
+      width: 200%;
+      height: 200%;
+      background: url('../img/near_symbols.png');
+    }
+    .symbols {
+      width: 200%;
+      height: 200%;
+      background: url('../img/symbols.png');
+    }
+    .far_symbols {
+      width: 200%;
+      height: 200%;
+      background: url('../img/far_symbols.png');
+    }
+    .more_far_symbols {
+      width: 200%;
+      height: 200%;
+      background: url('../img/more_far_symbols.png');
+    }
+  }
+  .project {
+    border-radius: 6px 6px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity .500s ease-in-out;
+  }
+  .project:hover {
+    border: 4px solid white;
+    opacity: 1;
+  }
+  .psd {
+    width: 55%;
+  }
+  .content {
+    display: flex;
+    padding-left: 150px;
+  }
+  .text {
+    padding-left: 100px;
+    .single-title {
+      @include fonts(MontserratBold, normal, 36px);
+      padding-top: 50px;
+    }
+    .single-content {
+      @include fonts(Montserrat, normal, 14px);
+      padding-top: 40px;
+      color: #9b9c9e;
+      width: 67%;
+      line-height: 25px;
+    }
+    .technologies, .contributeurs {
+      @include fonts(MontserratBold, normal, 25px);
+    }
+    .contributeurs {
+      margin-bottom: 80px;
+    }
+    hr {
+      background: #004DFD;
+      display: inline-block;
+      width: 40%;
+    }
+    .logo {
+      margin-left: 300px;
+    }
+  }
+  .gallery {
+    margin-top: 80px;
+  }
+}
+img.hover-shadow {
+  transition: 0.3s
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}

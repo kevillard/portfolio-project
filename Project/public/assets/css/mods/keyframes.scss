@@ -39,3 +39,26 @@
     transform: translate(-3%, -3%);
   }
 }
+@keyframes starsField {
+  0% {
+    -webkit-transform: translateX(-2%);
+    transform: translateX(-2%);
+  }
+  100% {
+    -webkit-transform: translateX(20%);
+    transform: translateX(20%);
+  }
+
+}
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}

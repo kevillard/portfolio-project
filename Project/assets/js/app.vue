@@ -1,6 +1,6 @@
 <template>
       <div id="app">
-        <Sidebar title="alivins projects"></Sidebar>
+        <Sidebar></Sidebar>
           <fade-transition>
               <router-view>
               </router-view>

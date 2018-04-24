@@ -29,6 +29,20 @@
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('build/app.js') }}"></script>
+        <script>
+            $(document).ready(function()
+            {
+                $('#nav-icon').click(function () {
+                    $(this).toggleClass('open')
+                    $('.nav').toggleClass('open')
+                    $('.nav-link').toggleClass('open')
+                })
+
+                $('.carousel').carousel({
+                    ride: true
+                })
+            })
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

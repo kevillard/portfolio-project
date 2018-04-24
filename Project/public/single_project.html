@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <title>Single project</title>
+</head>
+<body>
+
+<!-- Sidebar -->
+
+<!-- Content -->
+    <div class="single">
+        <ul class="parallax-window symbols-container">
+            <li class="parallax-layer near_symbols"></li>
+            <li class="parallax-layer symbols"></li>
+            <li class="parallax-layer far_symbols"></li>
+            <li class="parallax-layer more_far_symbols"></li>
+        </ul>
+        <div class="container-fluid content">
+            <img class="d-block psd" src="assets/img/thierry-meier-219007.jpg" alt="PSD">
+            <div class="text">
+                <div class="single-header d-inline-block">
+                    <h2 class="single-title">Space Invaders - ACS</h2>
+                    <hr />
+                </div>
+                    <img src="assets/img/work2.jpg" class="project logo d-inline-block" alt="Logo">
+                <p class="single-content">Duis aute irure dolor in reprehenderit in nulla volptate velit easse neon cillum dolore eu fugiat nulla pariatur. Exceptur aute sint occaecat dolor cupidatat non proident.
+                    Sed ut perspiciatis unde omnis iste natus error irure  aute sit voluatem accusantium doloremque.</p>
+                <div class="gallery">
+                <p class="technologies"><strong>Technologies - HTML5/CSS3/Javascript</strong></p>
+                <p class="contributeurs"><strong>Créateurs - Charlie Moreau - Yohann Thorez - Kevin Villard</strong></p>
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                    <img class="project hover-shadow" src="assets/img/work2.jpg" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/tilt.js"></script>
+<script src="assets/js/jquery.parallax.js"></script>
+<script>
+    $('.project').tilt({
+        glare: true,
+        maxGlare: .5,
+        perspective: 8000,
+        scale: 1.1
+    });
+    jQuery('.parallax-layer').parallax({}, {xparallax: '100px', yparallax: "100px"}, {xparallax: '200px', yparallax: "200px"}, {xparallax: '300px', yparallax: "300px"}, {xparallax: '400px', yparallax: "400px"});
+    jQuery('.parallax-layer').trigger('.single');
+</script>
+</body>
+</html>

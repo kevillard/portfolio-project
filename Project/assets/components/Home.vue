@@ -1,5 +1,5 @@
 <template>
-    <div v-cloak class="home">
+    <div>
         <header>
             <div class="container contenu">
                 <div class="col-lg-9 text-center">
@@ -9,6 +9,8 @@
             </div>
             <div class="text-center">
                 <a href="/#/projects" class="btn btn-lg">Mes Projets</a>
+                <a href="/#/aboutme" class="btn btn-lg">A propos</a>
+                <a href="/#/contact" class="btn btn-lg">Contact</a>
             </div>
         </header>
         <videobackground></videobackground>
@@ -27,9 +29,3 @@ import videobackground from '../components/VideoBackground'
         }
     }
 </script>
-
-<style scoped>
-[v-cloak] {
-  display:none;
-}
-</style>

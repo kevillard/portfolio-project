@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "npm": "^5.7.1",
     "particles.js": "^2.0.0",
     "progressive-image": "^1.2.0",
     "v-hotkey": "^0.2.0",
