@@ -15,19 +15,19 @@
     <div class="nav container-fluid">
         <ul class="navlist">
             <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'home' }">Accueil</router-link>
+                <router-link class="nav-link close" :to="{ name: 'home' }">Accueil</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'projects' }">Projets</router-link>
+                <router-link class="nav-link close" :to="{ name: 'projects' }">Projets</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'about' }">A propos de moi</router-link>
+                <router-link class="nav-link close" :to="{ name: 'about' }">A propos de moi</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'blog' }">Blog</router-link>
+                <router-link class="nav-link close" :to="{ name: 'blog' }">Blog</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'contact' }">Contact</router-link>
+                <router-link class="nav-link close" :to="{ name: 'contact' }">Contact</router-link>
             </li>
         </ul>
     </div>
