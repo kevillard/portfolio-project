@@ -1,0 +1,43 @@
+{%- block _project_form_images_widget -%}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imagesModal">
+    Choisissez vos images
+    </button>
+    <div class="form-check">
+    <div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="imagesModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Title">Media Manager</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+            {%- set options = choices -%}
+            {%- set x = 0 %}
+                    {% for group_label, choice in options %}
+                {%- if choice is iterable -%}
+                    <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                        {% set options = choice %}
+                        {{- block('choice_widget_options') -}}
+                    </optgroup>
+                {%- else -%}
+                <div class="col-md-8">
+                    <input class="form-check-input" {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} type="checkbox" value="{{ choice.value }}" {% if choice is selectedchoice(value) %} checked {% endif %} id="images_{{ x }}">
+                    <label class="form-check-label" for="image_{{ x }}">
+                        <img width="50%" src="{{ asset('assets/uploads/images/' ~choice.label~ '') }}" />
+                    </label>
+                </div>
+                    {%- set x = x + 1 -%}
+                {%- endif -%}
+            {% endfor %}
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Choisir</button>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+{%- endblock -%}

@@ -13,7 +13,7 @@ class ProjectsStore {
         var init = { method: 'POST',
                      url: "/api/projects",
                      headers: {
-                         "Authorization": "publickey"
+                         "Authorization": "public"
                      },
                      mode: 'cors',
                      cache: 'default' }
@@ -30,7 +30,7 @@ class ProjectsStore {
         var init = { method: 'POST',
                      url: "/api/project/"+id,
                      headers: {
-                         "Authorization": "publickey"
+                         "Authorization": "public"
                      },
                      mode: 'cors',
                      cache: 'default' };

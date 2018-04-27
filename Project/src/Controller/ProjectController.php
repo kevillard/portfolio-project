@@ -7,8 +7,10 @@ use App\Entity\Project;
 use App\Entity\Technology;
 use App\Entity\Creator;
 use App\Entity\Category;
+use App\Entity\Image;
 use App\Form\ProjectForm;
 use App\Form\SimpleForm;
+use App\Form\ImageForm;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -325,6 +327,43 @@ class ProjectController extends Controller
         ));
     }
 
+    /**
+     * @Route("/admin/addimage", name="image_create")
+     */
+    public function addImage(Request $request, SessionInterface $session)
+    {
+        $authAPI = $this->authAPI($session->get('apikey'));
+        $responseError = new Response();
+        $responseError->setStatusCode(500);
+
+        $image = new Image();
+
+        $form = $this->createForm(ImageForm::class, $image);
+
+        if($authAPI) {
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+               $img = $image->getFile();
+               $imgName = $this->uploadFile($img);
+               $image->setFile($imgName);
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($image);
+               $em->flush();
+
+                return $this->redirectToRoute('admin');
+            }
+        } else {
+            return $responseError;
+        }
+        return $this->render('security/add/addingImage.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
     public function uploadFile($file)
     {
       $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -338,12 +377,9 @@ class ProjectController extends Controller
     }
     public function authAPI($request){
 
-      $apiKey = $request;
+      $apiKey = $request->headers->get('Authorization') == null ? $request : $request->headers->get('Authorization');
 
-      if($apiKey == "" || $apiKey == null){
-          $apiKey = $request->headers->get('Authorization');
-      }
-      if($apiKey != "" && $apiKey != null && $apiKey != "publickey") {
+      if($apiKey != "" && $apiKey != null && $apiKey != "public") {
           $em = $this->getDoctrine()->getManager();
         $userKey = $em->getRepository('App\Entity\User')->findOneBy(['apikey' => $apiKey]);
         if(($userKey != "" && $userKey != null) && ($userKey->getApiKey() != "" && $userKey->getApiKey() != null && $userKey->getApiKey() == $apiKey)) {
@@ -351,7 +387,7 @@ class ProjectController extends Controller
         }
           return false;
         }
-        elseif($apiKey == "publickey")
+        elseif($apiKey == "public")
         {
           return "public";
         }

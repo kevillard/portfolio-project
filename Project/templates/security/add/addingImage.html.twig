@@ -1,0 +1,15 @@
+{% extends 'basedash.html.twig' %}
+
+{% block title %}
+    Admin | Ajouter une image
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <h1>Ajouter une image</h1>
+    {{ form_start(form, {attr: {class: 'form-group'} }) }}
+        {{ form_row(form.file, {attr: {class: 'form-control-file'} }) }}
+        {{ form_row(form.save, {attr: {class: 'btn btn-lg btn-success'}}) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}

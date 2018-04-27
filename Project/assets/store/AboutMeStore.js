@@ -12,7 +12,7 @@ class AboutMeStore {
         var init = { method: 'POST',
                      url: "/api/aboutme",
                      headers: {
-                         "Authorization": "publickey"
+                         "Authorization": "public"
                      },
                      mode: 'cors',
                      cache: 'default' }

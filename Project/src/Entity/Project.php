@@ -123,6 +123,14 @@ class Project
     private $creators;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Image", cascade={"persist"})
+     * @ORM\JoinTable(name="image_projects", joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="image_id", referencedColumnName="id")})
+     * @Serializer\Expose
+     */
+    private $images;
+
+    /**
      * @var string
      * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
@@ -130,12 +138,21 @@ class Project
      */
     private $imageSmartphone;
 
+    /**
+     * @var string
+     * @JMS\Serializer\Annotation\Type("string")
+     * @ORM\Column(type="string", length=100)
+     * @Serializer\Expose
+     */
+    private $preview;
+
     public function __construct()
     {
         $this->date = new \Datetime();
         $this->categories = new ArrayCollection();
         $this->technologies = new ArrayCollection();
         $this->creators = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getSousTitle()
@@ -322,5 +339,44 @@ class Project
     public function getCreators()
     {
         return $this->creators;
+    }
+
+    /**
+     * Get the value of preview
+     *
+     * @return  string
+     */ 
+    public function getPreview()
+    {
+        return $this->preview;
+    }
+
+    /**
+     * Set the value of preview
+     *
+     * @param  string  $preview
+     *
+     * @return  self
+     */ 
+    public function setPreview(string $preview)
+    {
+        $this->preview = $preview;
+
+        return $this;
+    }
+    public function addImages(Image $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+    public function removeImages(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    public function getImages()
+    {
+        return $this->images;
     }
 }

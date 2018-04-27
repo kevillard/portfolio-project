@@ -8,9 +8,9 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="/#/projects" class="btn btn-lg">Mes Projets</a>
-                <a href="/#/aboutme" class="btn btn-lg">A propos</a>
-                <a href="/#/contact" class="btn btn-lg">Contact</a>
+                <router-link :to="{ name: 'projects' }" class="btn btn-lg">Mes Projets</router-link>
+                <router-link :to="{ name: 'about' }" href="/#/aboutme" class="btn btn-lg">A propos</router-link>
+                <router-link :to="{ name: 'contact' }" href="/#/contact" class="btn btn-lg">Contact</router-link>
             </div>
         </header>
         <videobackground></videobackground>

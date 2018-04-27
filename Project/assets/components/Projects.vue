@@ -209,52 +209,20 @@
                 </div>
                 <div class="projects_list">
                     <div class="row">
-                        <div data-tilt class="project col-md-5">
+                        <a class="col-md-5" v-for="project in allProjects" :key="project.id" :href="project.link">
+                        <div data-tilt class="project" :style="{ 'background': 'url(assets/uploads/images/'+ project.preview +')' }"> <!-- Mettre une preview -->
                             <div class="content">
                                 <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
+                                <h2 class="text-uppercase title">{{ project.title }}</h2>
+                                <p class="excerpt">{{ project.sous_title }}</p>
                             </div>
                         </div>
-                        <div data-tilt class="project col-md-5">
-                            <div class="content">
-                                <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
-                            </div>
-                        </div>
-                        <div data-tilt class="project col-md-5">
-                            <div class="content">
-                                <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
-                            </div>
-                        </div>
-                        <div data-tilt class="project col-md-5">
-                            <div class="content">
-                                <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
-                            </div>
-                        </div>
-                        <div data-tilt class="project col-md-5">
-                            <div class="content">
-                                <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
-                            </div>
-                        </div>
-                        <div data-tilt class="project col-md-5">
-                            <div class="content">
-                                <p class="date">12 mars 2018</p>
-                                <h2 class="text-uppercase title">Get Some Fresh</h2>
-                                <p class="excerpt">Lorem Ipsum dolor sit amet bluesdkjqshdkjhqskjdkljh qslkdjqskjdh</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        {{ allProjects }}
     </main>
 </template>
 

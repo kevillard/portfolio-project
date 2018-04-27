@@ -13,7 +13,7 @@
 	var debug = true,
 	    
 	    options = {
-	    	mouseport:     'body',  // jQuery object or selector of DOM node to use as mouseport
+	    	mouseport:     'html',  // jQuery object or selector of DOM node to use as mouseport
 	    	xparallax:     true,    // boolean | 0-1 | 'npx' | 'n%'
 	    	yparallax:     true,    //
 	    	xorigin:       0.5,     // 0-1 - Sets default alignment. Only has effect when parallax values are something other than 1 (or true, or '100%')
@@ -517,9 +517,10 @@
 		mouse = [e.pageX, e.pageY];
 	});
 }(jQuery));
-
+$(document).load( ()=>{
 jQuery('.parallax-layer').parallax({}, {xparallax: '100px', yparallax: "100px"}, {
     xparallax: '200px',
     yparallax: "200px"
 }, {xparallax: '300px', yparallax: "300px"}, {xparallax: '400px', yparallax: "400px"});
 jQuery('.parallax-layer').trigger('.single');
+});

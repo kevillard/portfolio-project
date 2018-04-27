@@ -16,7 +16,7 @@ nav {
   justify-content: center;
   opacity: 0;
   transition: opacity 800ms;
-  z-index: 99;
+  z-index: 98;
   top: 0;
   bottom: 0;
   width: 100%;
@@ -31,9 +31,6 @@ nav {
   }
   .nav-link.open {
     pointer-events: all;
-  }
-  .nav-link.close {
-    pointer-events: none;
   }
 }
 .nav.open {

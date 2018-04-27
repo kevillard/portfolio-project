@@ -32,6 +32,12 @@ class ProjectForm extends AbstractType
                 'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => true))
+            ->add('preview', FileType::class, array('label' => 'Image de fond', 'required' => 'true'))
+            ->add('images', EntityType::class, array(
+                'class' => 'App\Entity\Image',
+                'choice_label' => 'file',
+                'expanded' => false,
+                'multiple' => true))
             ->add('content', TextareaType::class, array('label' => 'Petit résumé'))
             ->add('link', TextType::class, array('label' => 'Lien vers le projet'))
             ->add('logo', FileType::class, array('label' => 'Logo du projet (en .png)', 'required' => 'false'))
